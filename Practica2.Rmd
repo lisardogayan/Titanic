@@ -32,19 +32,56 @@ El dataset de Titanic: Machine Learning from Disaster se registran los datos de 
 
 # 2 - Integración y selección de los datos de interés a analizar
 
-Siendo los dataset relativamente pequeños (dataset de test 418 observaciones y 11 variables, dataset de train 891 y 12 variables), con solo 1309 observaciones y 11 variables, se importaran en su totalidad para la realización de esta practica. Inicialmente no se importara la variable survived del dataset de train. 
-A continuacion se importan, fusionan los datos y se revisa la estructura inicial de los datos.  
+Se importan los datos. Primero el dataset train.
 
-```{r Importacion datos}
-datostest <- read.csv ("./data/test.csv", stringsAsFactors = F)
-datostrain <- read.csv("./data/train.csv", stringsAsFactors = F)
-datostrain1 <- datostrain[,-2]
 
-data <- rbind(datostrain1, datostest) # Fusion datasets
-str(data)
+```{r Importacion datos train}
+datostrain <- read.csv("./data/train.csv", stringsAsFactors = F, na.strings = c("NA", ""))
+str(datostrain)
+
 ```
 
-A continuación se detallan las variables y su tipo inicial, este ultimo,se modificara para su mejor analisis. 
+Se observa como consta de 891 muestras y 12 variables, entre ellas Survived.
+
+Posteiormente el dataset test.
+
+```{r Importacion datos test}
+datostest <- read.csv ("./data/test.csv", stringsAsFactors = F, na.strings = c("NA", ""))
+str(datostest)
+```
+
+Se observa como tiene 418 muestra, y 11 variables. La variable Survived no aparece porque es la que se tiene que predecir.
+ 
+A continuacion, a la hora de fusionar los datos caben dos posibilidades, asignar "NA" a la variable datostest$Survived o no considerar los datos de survived en train. Se importan, fusionan los datos y se revisa la estructura inicial de los datos.  
+
+```{r Importacion datos}
+
+datostest$Survived <- NA
+datos <- rbind(datostrain, datostest)
+str(datos)
+```
+
+A continuación comprobamos si faltan datos.
+
+Compruebo que no hay valores nulos.
+
+```{r Check valores faltantes}
+# Busco primero qué variables tienen valores perdidos
+sapply(datos, function(x) sum(is.na(x)))
+```
+
+Podemos observar, que en Survived, salen los 418, que tenemos que predecir, por lo que todos los valores de train están informados.
+
+A continuación se detallan las variables y su tipo inicial, este ultimo, se modificara para su mejor analisis. 
+
+
+```{r Importacion datos}
+
+# datostrain1 <- datostrain[,-2]
+# data <- rbind(datostrain1, datostest) # Fusion datasets
+data <- datos[,-2]
+str(data)
+```
 
 ```{r Tipos de Variables Original}
 tipos <- sapply(data, class)
@@ -163,3 +200,22 @@ data$Embarked[c(62, 830)] <- 'C'
 ##hist (data$Age, main = "Dist. Edad")
 
 ```
+
+# 4. Análisis de los datos.
+
+## 4.1. Selección de los grupos de datos que se quieren analizar/comparar (planificación de los análisis a aplicar)
+
+
+## 4.2. Coprobación de la normalidad y homogeneidad de la varianza.
+
+
+## 4.3. Aplicación de pruebas estadísticas para comprar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
+
+
+# 5. Representación de los reultados a apartir de tablas y gráficas.
+
+
+# 6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problemas?
+
+
+# 7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.
