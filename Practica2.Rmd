@@ -28,7 +28,7 @@ library(dplyr)
 
 # 1 - Descripción del dataset. ¿Por qué es importante y qué pregunta/problema pretende responder?
 
-El dataset de Titanic: Machine Learning from Disaster se registran los datos de los pasajeros del famoso trasatlantico y se utiliza para predecir los sobrevivientes. Los datos estan divididos en dos dataset, uno de test y otro entrenamiento, para la creación de modelos de predicción.
+El dataset de Titanic: Machine Learning from Disaster se registran los datos de los pasajeros del famoso trasatlántico y se utiliza para predecir los supervivientes. Los datos estan divididos en dos dataset, uno de test y otro entrenamiento, para la creación de modelos de predicción.
 
 # 2 - Integración y selección de los datos de interés a analizar
 
