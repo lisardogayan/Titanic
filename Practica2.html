@@ -427,12 +427,12 @@ character
 </tr>
 </tbody>
 </table>
-<p>De las variables, se convertiran a entero la edad y a factor las siguientes variables Pclass, Sex, Cabin y Embarked.</p>
-<pre class="r"><code>data$Age &lt;- as.integer(data$Age)
+<p>Las variables, que no tienen datos faltantes, class y sex, se convertiran a factor. La variable cabin tiene muchos datos faltantes, así que en un primer momento no se utilizará.</p>
+<pre class="r"><code>#data$Age &lt;- as.integer(data$Age)
 data$Pclass &lt;- as.factor(data$Pclass)
 data$Sex &lt;- as.factor(data$Sex)
-data$Embarked &lt;- as.factor(data$Embarked)
-data$Cabin &lt;- as.factor(data$Cabin)
+#data$Embarked &lt;- as.factor(data$Embarked)
+#data$Cabin &lt;- as.factor(data$Cabin)
 
 tipos_new &lt;- sapply(data, class)
 kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_new))) %&gt;%
@@ -486,7 +486,7 @@ factor
 Age
 </td>
 <td style="text-align:left;">
-integer
+numeric
 </td>
 </tr>
 <tr>
@@ -526,7 +526,7 @@ numeric
 Cabin
 </td>
 <td style="text-align:left;">
-factor
+character
 </td>
 </tr>
 <tr>
@@ -534,7 +534,7 @@ factor
 Embarked
 </td>
 <td style="text-align:left;">
-factor
+character
 </td>
 </tr>
 </tbody>
@@ -542,10 +542,10 @@ factor
 <p>Una vez modificadas los tipos de valores se resume que</p>
 <pre class="r"><code>summary(data)</code></pre>
 <pre><code>##   PassengerId   Pclass      Name               Sex           Age       
-##  Min.   :   1   1:323   Length:1309        female:466   Min.   : 0.00  
+##  Min.   :   1   1:323   Length:1309        female:466   Min.   : 0.17  
 ##  1st Qu.: 328   2:277   Class :character   male  :843   1st Qu.:21.00  
 ##  Median : 655   3:709   Mode  :character                Median :28.00  
-##  Mean   : 655                                           Mean   :29.86  
+##  Mean   : 655                                           Mean   :29.88  
 ##  3rd Qu.: 982                                           3rd Qu.:39.00  
 ##  Max.   :1309                                           Max.   :80.00  
 ##                                                         NA's   :263    
@@ -557,14 +557,14 @@ factor
 ##  3rd Qu.:1.0000   3rd Qu.:0.000                      3rd Qu.: 31.275  
 ##  Max.   :8.0000   Max.   :9.000                      Max.   :512.329  
 ##                                                      NA's   :1        
-##              Cabin      Embarked  
-##  C23 C25 C27    :   6   C   :270  
-##  B57 B59 B63 B66:   5   Q   :123  
-##  G6             :   5   S   :914  
-##  B96 B98        :   4   NA's:  2  
-##  C22 C26        :   4             
-##  (Other)        : 271             
-##  NA's           :1014</code></pre>
+##     Cabin             Embarked        
+##  Length:1309        Length:1309       
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+##                                       
+## </code></pre>
 <p>PassengerId: Variable de tipo entero que contiene el id del pasajero, no existen valores nulos o perdidos.<br />
 Pclass: Variable de tipo factor con la categoria asignada al pasajero, no existen valores nulos o perdidos.<br />
 Name: Variable de tipo texto con el nombre del pasajero, no existen valores nulos o perdidos.<br />

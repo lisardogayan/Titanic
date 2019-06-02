@@ -87,14 +87,14 @@ tipos <- sapply(data, class)
 kable(data.frame(Variables = names(tipos), Tipo_Variable= as.vector(tipos))) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
-De las variables, se convertiran a entero la edad y a factor las siguientes variables Pclass, Sex, Cabin y Embarked.
+Las variables, que no tienen datos faltantes, class y sex, se convertiran a factor. La variable cabin tiene muchos datos faltantes, así que en un primer momento no se utilizará. 
 
 ```{r Conversion Variables}
-data$Age <- as.integer(data$Age)
+#data$Age <- as.integer(data$Age)
 data$Pclass <- as.factor(data$Pclass)
 data$Sex <- as.factor(data$Sex)
-data$Embarked <- as.factor(data$Embarked)
-data$Cabin <- as.factor(data$Cabin)
+#data$Embarked <- as.factor(data$Embarked)
+#data$Cabin <- as.factor(data$Cabin)
 
 tipos_new <- sapply(data, class)
 kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_new))) %>%
