@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  1 JUN 2019 22:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  2 JUN 2019 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -830,185 +830,234 @@ File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 {c:/Users/LG/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.m
 ap}]
 
+Package xcolor Warning: Incompatible color definition on input line 194.
+
+
 Package xcolor Warning: Incompatible color definition on input line 199.
 
 
-Package xcolor Warning: Incompatible color definition on input line 208.
+Package xcolor Warning: Incompatible color definition on input line 199.
 
 
-Package xcolor Warning: Incompatible color definition on input line 208.
-
-
-Overfull \hbox (469.99225pt too wide) in paragraph at lines 223--223
+Overfull \hbox (469.99225pt too wide) in paragraph at lines 215--215
 []\T1/lmtt/m/n/10 ##  $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, M
 rs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, 
 Mrs. Jacques Heath (Lily May Peel)" ...[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 228.
+Package xcolor Warning: Incompatible color definition on input line 222.
 
 
-Package xcolor Warning: Incompatible color definition on input line 234.
+Package xcolor Warning: Incompatible color definition on input line 227.
 
 
-Package xcolor Warning: Incompatible color definition on input line 234.
+Package xcolor Warning: Incompatible color definition on input line 227.
 
 
-Package xcolor Warning: Incompatible color definition on input line 267.
-
-
-Package xcolor Warning: Incompatible color definition on input line 279.
-
-
-Package xcolor Warning: Incompatible color definition on input line 279.
-
-
-Package xcolor Warning: Incompatible color definition on input line 279.
+Overfull \hbox (202.24303pt too wide) in paragraph at lines 242--242
+[]\T1/lmtt/m/n/10 ##  $ Name       : chr  "Kelly, Mr. James" "Wilkes, Mrs. Jame
+s (Ellen Needs)" "Myles, Mr. Thomas Francis" "Wirz, Mr. Albert" ...[] 
+ []
 
 [2]
 
-Package xcolor Warning: Incompatible color definition on input line 279.
+Package xcolor Warning: Incompatible color definition on input line 252.
 
 
-Package xcolor Warning: Incompatible color definition on input line 279.
+Package xcolor Warning: Incompatible color definition on input line 258.
 
 
-Package xcolor Warning: Incompatible color definition on input line 311.
+Package xcolor Warning: Incompatible color definition on input line 258.
 
 
-Package xcolor Warning: Incompatible color definition on input line 315.
+Overfull \hbox (469.99225pt too wide) in paragraph at lines 274--274
+[]\T1/lmtt/m/n/10 ##  $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, M
+rs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, 
+Mrs. Jacques Heath (Lily May Peel)" ...[] 
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 315.
+Package xcolor Warning: Incompatible color definition on input line 280.
+
+
+Package xcolor Warning: Incompatible color definition on input line 285.
+
+
+Package xcolor Warning: Incompatible color definition on input line 285.
+
+
+Package xcolor Warning: Incompatible color definition on input line 300.
+
+
+Package xcolor Warning: Incompatible color definition on input line 307.
+
+
+Package xcolor Warning: Incompatible color definition on input line 307.
+
+
+Overfull \hbox (469.99225pt too wide) in paragraph at lines 322--322
+[]\T1/lmtt/m/n/10 ##  $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, M
+rs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, 
+Mrs. Jacques Heath (Lily May Peel)" ...[] 
+ []
 
 [3]
 
-Package xcolor Warning: Incompatible color definition on input line 385.
+Package xcolor Warning: Incompatible color definition on input line 324.
 
 
-Package xcolor Warning: Incompatible color definition on input line 389.
+Package xcolor Warning: Incompatible color definition on input line 330.
 
 
-Package xcolor Warning: Incompatible color definition on input line 389.
+Package xcolor Warning: Incompatible color definition on input line 330.
 
 
-Package xcolor Warning: Incompatible color definition on input line 400.
+Package xcolor Warning: Incompatible color definition on input line 363.
 
 
-Package xcolor Warning: Incompatible color definition on input line 404.
+Package xcolor Warning: Incompatible color definition on input line 375.
 
 
-Package xcolor Warning: Incompatible color definition on input line 404.
+Package xcolor Warning: Incompatible color definition on input line 375.
 
 
-Package xcolor Warning: Incompatible color definition on input line 410.
+Package xcolor Warning: Incompatible color definition on input line 407.
+
+[4]
+
+Package xcolor Warning: Incompatible color definition on input line 411.
 
 
-Package xcolor Warning: Incompatible color definition on input line 415.
+Package xcolor Warning: Incompatible color definition on input line 411.
 
 
-Package xcolor Warning: Incompatible color definition on input line 415.
+Package xcolor Warning: Incompatible color definition on input line 481.
+
+[5]
+
+Package xcolor Warning: Incompatible color definition on input line 485.
 
 
-Package xcolor Warning: Incompatible color definition on input line 421.
+Package xcolor Warning: Incompatible color definition on input line 485.
 
 
-Package xcolor Warning: Incompatible color definition on input line 428.
+Package xcolor Warning: Incompatible color definition on input line 496.
 
 
-Package xcolor Warning: Incompatible color definition on input line 428.
+Package xcolor Warning: Incompatible color definition on input line 500.
 
-<Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf, id=54, 469.755pt x
- 325.215pt>
+
+Package xcolor Warning: Incompatible color definition on input line 500.
+
+
+Package xcolor Warning: Incompatible color definition on input line 506.
+
+
+Package xcolor Warning: Incompatible color definition on input line 511.
+
+
+Package xcolor Warning: Incompatible color definition on input line 511.
+
+
+Package xcolor Warning: Incompatible color definition on input line 517.
+
+
+Package xcolor Warning: Incompatible color definition on input line 524.
+
+
+Package xcolor Warning: Incompatible color definition on input line 524.
+
+<Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf, id=103, 469.755pt 
+x 325.215pt>
 File: Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf Graphic file (
 type pdf)
 <use Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf>
 Package pdftex.def Info: Practica2_files/figure-latex/Confirmación nulos Fare-1
-.pdf  used on input line 434.
+.pdf  used on input line 530.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[4]
+[6]
 
-Package xcolor Warning: Incompatible color definition on input line 439.
-
-
-Package xcolor Warning: Incompatible color definition on input line 443.
+Package xcolor Warning: Incompatible color definition on input line 535.
 
 
-Package xcolor Warning: Incompatible color definition on input line 443.
+Package xcolor Warning: Incompatible color definition on input line 539.
 
 
-Package xcolor Warning: Incompatible color definition on input line 452.
+Package xcolor Warning: Incompatible color definition on input line 539.
 
 
-Package xcolor Warning: Incompatible color definition on input line 456.
+Package xcolor Warning: Incompatible color definition on input line 548.
 
 
-Package xcolor Warning: Incompatible color definition on input line 456.
+Package xcolor Warning: Incompatible color definition on input line 552.
 
 
-Package xcolor Warning: Incompatible color definition on input line 469.
+Package xcolor Warning: Incompatible color definition on input line 552.
 
 
-Package xcolor Warning: Incompatible color definition on input line 473.
+Package xcolor Warning: Incompatible color definition on input line 565.
 
 
-Package xcolor Warning: Incompatible color definition on input line 473.
-
-[5 <./Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 484.
+Package xcolor Warning: Incompatible color definition on input line 569.
 
 
-Package xcolor Warning: Incompatible color definition on input line 494.
+Package xcolor Warning: Incompatible color definition on input line 569.
+
+[7 <./Practica2_files/figure-latex/Confirmación nulos Fare-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 580.
 
 
-Package xcolor Warning: Incompatible color definition on input line 494.
+Package xcolor Warning: Incompatible color definition on input line 590.
 
-<Practica2_files/figure-latex/unnamed-chunk-1-1.pdf, id=72, 469.755pt x 325.215
-pt>
+
+Package xcolor Warning: Incompatible color definition on input line 590.
+
+<Practica2_files/figure-latex/unnamed-chunk-1-1.pdf, id=121, 469.755pt x 325.21
+5pt>
 File: Practica2_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf
 )
 <use Practica2_files/figure-latex/unnamed-chunk-1-1.pdf>
 Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-1-1.pdf  us
-ed on input line 496.
+ed on input line 592.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Package xcolor Warning: Incompatible color definition on input line 501.
+Package xcolor Warning: Incompatible color definition on input line 597.
 
 
-Package xcolor Warning: Incompatible color definition on input line 505.
+Package xcolor Warning: Incompatible color definition on input line 601.
 
 
-Package xcolor Warning: Incompatible color definition on input line 505.
+Package xcolor Warning: Incompatible color definition on input line 601.
 
 
-Package xcolor Warning: Incompatible color definition on input line 510.
+Package xcolor Warning: Incompatible color definition on input line 606.
 
 
-Package xcolor Warning: Incompatible color definition on input line 516.
+Package xcolor Warning: Incompatible color definition on input line 612.
 
 
-Package xcolor Warning: Incompatible color definition on input line 516.
+Package xcolor Warning: Incompatible color definition on input line 612.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 519.
-[6 <./Practica2_files/figure-latex/unnamed-chunk-1-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 519.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 642.
+[8 <./Practica2_files/figure-latex/unnamed-chunk-1-1.pdf>] [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 642.
 (./Practica2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 519.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 519.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 642.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 642.
 Package rerunfilecheck Info: File `Practica2.out' has not changed.
-(rerunfilecheck)             Checksum: FF9E4456D2219E127FBBBAAFC1571D17;2068.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 519.
+(rerunfilecheck)             Checksum: 24BA3B614B3B66C45F19DEB87B0F6557;6851.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 642.
  ) 
 Here is how much of TeX's memory you used:
- 12572 strings out of 494562
- 179351 string characters out of 6176265
- 266800 words of memory out of 5000000
- 16009 multiletter control sequences out of 15000+600000
+ 12596 strings out of 494562
+ 180309 string characters out of 6176265
+ 268185 words of memory out of 5000000
+ 16023 multiletter control sequences out of 15000+600000
  47544 words of font info for 45 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 28i,7n,35p,631b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 28i,7n,35p,1500b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 {c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}<
 c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
@@ -1021,10 +1070,10 @@ ri12.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmtk10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/l
 m/lmtt10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /lm/lmtti10.pfb>
-Output written on Practica2.pdf (6 pages, 244933 bytes).
+Output written on Practica2.pdf (9 pages, 255918 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 176 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 107 words of extra memory for PDF output out of 10000 (max. 10000000)
 
