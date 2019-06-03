@@ -5,6 +5,11 @@ author:
 - "José Luis Melo"
 date: '`r format(Sys.Date(),"%e %B, %Y")`'
 output:
+  pdf_document:
+    highlight: default
+    number_sections: no
+    toc: yes
+    toc_depth: 3
   html_document:
     highlight: default
     number_sections: no
@@ -12,11 +17,6 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
-  pdf_document:
-    highlight: default
-    number_sections: no
-    toc: yes
-    toc_depth: 3
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -150,7 +150,7 @@ Se puede analizar si es mejor imputar por la media, mediana u otro método (rpart
 
 - Fare: *existe 1 valor nulo.*     
 Para imputar valores **Fare**  
-Dado que unicamente hay un valor perdido, es posible imputarlo por la media en base al puerto de embarque "S" y la clase "3"
+Dado que unicamente hay un valor perdido, es posible imputarlo por la media o la mediana en base al puerto de embarque "S" y la clase "3"
 
 ```{r Confirmación nulos Fare}
 data[is.na(data$Fare),]
@@ -159,6 +159,16 @@ mean(M_fare$Fare, na.rm = T)
 median(M_fare$Fare, na.rm = T)
 
 ``` 
+```{r Plot nulos Fare}
+ggplot(M_fare,  aes(x = Fare)) +
+  geom_density(fill = 'grey', alpha=0.4) + 
+  geom_vline(aes(xintercept=median(Fare, na.rm=T)),
+    colour='blue', linetype='dashed', lwd=1) +
+  geom_vline(aes(xintercept=mean(Fare, na.rm=T)),
+  colour='red', linetype='dashed', lwd=1)
+``` 
+Observamos como al realizar la gráfica nos dice que hay un valor nulo.
+
 La tarifa de 8.05 coincide con la mediana de los pasajeros de tercera clase que embarcaron en S, por lo que se podría imputar este valor. 
 
 ```{r Imputacion Fare}
@@ -166,10 +176,10 @@ data$Fare[c(1044)] <- 8.05
 data[1044,]
 ```
 
+Volviendo a representar
 
-
-```{r Plot nulos Fare}
-
+```{r Plot nulos Fare 2}
+M_fare<- subset(data,data$Pclass == '3' & data$Embarked == 'S')
 ggplot(M_fare,  aes(x = Fare)) +
   geom_density(fill = 'grey', alpha=0.4) + 
   geom_vline(aes(xintercept=median(Fare, na.rm=T)),
@@ -178,6 +188,7 @@ ggplot(M_fare,  aes(x = Fare)) +
   colour='red', linetype='dashed', lwd=1)
 ``` 
 
+Ahora ya no sale que haya un valor nulo en fare.
 
 - Cabin: *existen 1014 valores perdidos.*     
 Para imputar valores **Cabin**  
@@ -186,18 +197,21 @@ Esta variable tiene muchos valores perdidos, se podria conseguir predecir la cub
 
 - Embarked: *existen 2 valores perdidos.*      
 Para imputar valores **Embarked**  
-Al ser unicamente dos valores perdidos, se podría sustituir los valores por la media, en base a otros pasajeros de la misma clase y puerto de embarque. 
-Los pasajeros han pagado una tarifa de 80 y pertenecian a primera clase. 
+
+Mostramos los valores perdidos
 
 ```{r}
-data[(data$Embarked==""),]
-embarco <- data %>%
-  filter(PassengerId != 62 & PassengerId != 830)
+data[is.na(data$Embarked),]
+
 ```
 
+Al ser unicamente dos valores perdidos, se podría sustituir los valores por la media, en base a otros pasajeros de la misma clase y tarifa (Fare). 
+Los pasajeros han pagado una tarifa de 80 y pertenecian a primera clase. 
 
 ```{r Plot nulos embarked}
-ggplot(embarco, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
+embarked_pass_1 <- data %>%
+  filter(PassengerId != 62 & PassengerId != 830 & Pclass == 1)
+ggplot(embarked_pass_1, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
   geom_boxplot() +
   geom_hline(aes(yintercept=80), 
     colour='blue', linetype='dashed', lwd=1) 
@@ -208,6 +222,20 @@ La tarifa de 80 coincide con la media de los pasajeros de primera clase que emba
 ```{r Imputacion Embarco}
 data$Embarked[c(62, 830)] <- 'C'
 ```
+
+Otra opción, sería considerar también el sexo, ya que principios del siglo XX, no se caracterizaba por una igualdad de hombres y mujeres.
+
+```{r Plot nulos embarked considerando sexo}
+embarked_pass_2 <- data %>%
+  filter(PassengerId != 62 & PassengerId != 830 & Pclass == 1 & Sex == "female")
+ggplot(embarked_pass_2, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
+  geom_boxplot() +
+  geom_hline(aes(yintercept=80), 
+    colour='blue', linetype='dashed', lwd=1) 
+
+```
+
+En este caso cualquiera de los 3 puertos tendría una media cercana a 80. Como no creemos que el puerto de embarque este correlacionado con la supervivencia, podemos dejar "C"
 
 ## 3.2. Identificación y tratamiento de valores extremos. 
 
@@ -224,7 +252,7 @@ data$Embarked[c(62, 830)] <- 'C'
 ## 4.1. Selección de los grupos de datos que se quieren analizar/comparar (planificación de los análisis a aplicar)
 
 
-## 4.2. Coprobación de la normalidad y homogeneidad de la varianza.
+## 4.2. Comprobación de la normalidad y homogeneidad de la varianza.
 
 
 ## 4.3. Aplicación de pruebas estadísticas para comprar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
