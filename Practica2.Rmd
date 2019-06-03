@@ -18,7 +18,12 @@ output:
     toc: yes
     toc_depth: 3
 ---
-```{r  Librerias}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r  Librerias , include=FALSE, eval = TRUE}
+library(knitr)
 library(kableExtra)
 library(ggplot2)
 library(dplyr)
@@ -35,9 +40,8 @@ Se importan los datos. Primero el dataset train.
 
 
 ```{r Importacion datos train}
-datostrain <- read.csv("./data/train.csv", stringsAsFactors = F, na.strings = c("NA", ""))
+datostrain <- read.csv("./data/train.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
 str(datostrain)
-
 ```
 
 Se observa como consta de 891 muestras y 12 variables, entre ellas Survived.
@@ -45,7 +49,7 @@ Se observa como consta de 891 muestras y 12 variables, entre ellas Survived.
 Posteiormente el dataset test.
 
 ```{r Importacion datos test}
-datostest <- read.csv ("./data/test.csv", stringsAsFactors = F, na.strings = c("NA", ""))
+datostest <- read.csv ("./data/test.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
 str(datostest)
 ```
 
@@ -60,21 +64,21 @@ datos <- rbind(datostrain, datostest)
 str(datos)
 ```
 
-A continuación comprobamos si faltan datos.
-
-Compruebo que no hay valores nulos.
+A continuación comprobamos los datos que faltan
 
 ```{r Check valores faltantes}
 # Busco primero qué variables tienen valores perdidos
-sapply(datos, function(x) sum(is.na(x)))
+missing_numbers <- sapply(datos, function(x) {sum(is.na(x))})
+kable(data.frame(Variables = names(missing_numbers), Datos_faltantes= as.vector(missing_numbers))) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
 
 Podemos observar, que en Survived, salen los 418, que tenemos que predecir, por lo que todos los valores de train están informados.
 
-A continuación se detallan las variables y su tipo inicial, este ultimo, se modificara para su mejor analisis. 
+A continuación se detallan las variables y su tipo inicial, este último, se modificara para su mejor analisis. 
 
 
-```{r Importacion datos}
+```{r Prescindimos de survived}
 
 # datostrain1 <- datostrain[,-2]
 # data <- rbind(datostrain1, datostest) # Fusion datasets
@@ -101,7 +105,8 @@ kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_ne
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
 
-Una vez modificadas los tipos de valores se resume que
+Una vez modificadas los tipos de valores se resume que:
+
 ```{r Resumen Variables}
 summary(data)
 ```
@@ -109,8 +114,8 @@ summary(data)
 PassengerId: Variable de tipo entero que contiene el id del pasajero, no existen valores nulos o perdidos.  
 Pclass: Variable de tipo factor con la categoria asignada al pasajero, no existen valores nulos o perdidos.  
 Name: Variable de tipo texto con el nombre del pasajero, no existen valores nulos o perdidos.  
-Sex: Variable de tipo factor con el genero del pasajero, no existen valores nulos o perdidos.  
-Age: Variable de tipo entero que especifica la edad del pasajero, **existen 263 valores nulos.**  
+Sex: Variable de tipo factor con el genero del pasajero (másculino, femenino), no existen valores nulos o perdidos.  
+Age: Variable de tipo numérico que especifica la edad del pasajero, **existen 263 valores nulos.**  
 SibSp: Variable de tipo entero que especifica el numero de hermanos/esposa abordo, no existen valores nulos o perdidos.  
 Parch: Variable de tipo entero que especifica el numero de padres/hijos abordo, no existen valores nulos o perdidos.  
 Ticket: Variable de tipo texto que indica el numero de ticket, no existen valores nulos o perdidos.   
@@ -121,53 +126,65 @@ Embarked: Variable de tipo factor que indica el puerto de embarque, **existen 2 
 # 3 - Limpieza de datos
 
 ## 3.1. ¿Los datos contienen ceros o elementos vacíos? ¿Cómo gestionarías cada uno de estos casos?
+
+Volvemos a mostrar los datos que contienen ceros o elementos vacíos.
+
+
+```{r Check valores faltantes bis}
+# Busco primero qué variables tienen valores perdidos
+missing_numbers <- sapply(datos, function(x) {sum(is.na(x))})
+kable(data.frame(Variables = names(missing_numbers), Datos_faltantes= as.vector(missing_numbers))) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
   
+
 De las variables existentes a continuación se espedifican aquellas que contienen valores perdido o nulos.  
 
-Age: *existen 263 valores nulos.*  
+- Age: *existen 263 valores nulos.*  
 
-"Para imputar valores **edad**, (analizando si es mejor imputar mediante la media de los valores, rpart o mice)"
-
-http://jstatsoft.org/article/view/v045i03  
-Data Analysis with R,  A comprehensive guide to manipulating, analyzing and visualizing data in R
+Para imputar valores de **edad**, hay varias opciones desde la más sencilla que sería asignar la media a otras opciones como la propuesta en 
+http://jstatsoft.org/article/view/v045i03 Data Analysis with R,  A comprehensive guide to manipulating, analyzing and visualizing data in R
 Pag 373 - 386 
-```{r Confirmación nulos age}
-sum(is.na(data$Age))     ## Realiza el conteo de valores NA de la variable Age
-``` 
 
-Fare: *existe 1 valor nulo.*     
+Se puede analizar si es mejor imputar por la media, mediana u otro método (rpart o mice)
+
+- Fare: *existe 1 valor nulo.*     
 Para imputar valores **Fare**  
 Dado que unicamente hay un valor perdido, es posible imputarlo por la media en base al puerto de embarque "S" y la clase "3"
 
 ```{r Confirmación nulos Fare}
-sum(is.na(data$Fare))    ## Realiza el conteo de valores NA de la variable Fare
-
+data[is.na(data$Fare),]
 M_fare<- subset(data,data$Pclass == '3' & data$Embarked == 'S')
+mean(M_fare$Fare, na.rm = T)
 median(M_fare$Fare, na.rm = T)
+
+``` 
+La tarifa de 8.05 coincide con la mediana de los pasajeros de tercera clase que embarcaron en S, por lo que se podría imputar este valor. 
+
+```{r Imputacion Fare}
+data$Fare[c(1044)] <- 8.05
+data[1044,]
+```
+
+
+
+```{r Plot nulos Fare}
 
 ggplot(M_fare,  aes(x = Fare)) +
   geom_density(fill = 'grey', alpha=0.4) + 
   geom_vline(aes(xintercept=median(Fare, na.rm=T)),
-    colour='blue', linetype='dashed', lwd=1) 
+    colour='blue', linetype='dashed', lwd=1) +
+  geom_vline(aes(xintercept=mean(Fare, na.rm=T)),
+  colour='red', linetype='dashed', lwd=1)
 ``` 
 
-La tarifa de 80 coincide con la media de los pasajeros de primera clase que embarcaron en C, por lo que se podría imputar este puerto. 
 
-```{r Imputacion Fare}
-data$Fare[c(1044)] <- 80
-```
-
-
-
-Cabin: *existen 1014 valores perdidos.*     
+- Cabin: *existen 1014 valores perdidos.*     
 Para imputar valores **Cabin**  
 Esta variable tiene muchos valores perdidos, se podria conseguir predecir la cubierta asignada al pasajero pero es un dato que poco beneficio podría traer ya que se puede realizar el analisis con la combinación entre la tarifa y la clase del pasajero.  
 
-```{r Confirmación nulos Cabin}
-sum(data$Cabin=="")      ## Realiza el conteo de valores vacios de la variable Cabin
-```
 
-Embarked: *existen 2 valores perdidos.*      
+- Embarked: *existen 2 valores perdidos.*      
 Para imputar valores **Embarked**  
 Al ser unicamente dos valores perdidos, se podría sustituir los valores por la media, en base a otros pasajeros de la misma clase y puerto de embarque. 
 Los pasajeros han pagado una tarifa de 80 y pertenecian a primera clase. 
@@ -176,14 +193,16 @@ Los pasajeros han pagado una tarifa de 80 y pertenecian a primera clase.
 data[(data$Embarked==""),]
 embarco <- data %>%
   filter(PassengerId != 62 & PassengerId != 830)
+```
 
+
+```{r Plot nulos embarked}
 ggplot(embarco, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
   geom_boxplot() +
   geom_hline(aes(yintercept=80), 
     colour='blue', linetype='dashed', lwd=1) 
 
 ```
-
 La tarifa de 80 coincide con la media de los pasajeros de primera clase que embarcaron en C, por lo que se podría imputar este puerto. 
 
 ```{r Imputacion Embarco}
