@@ -27,6 +27,7 @@ library(knitr)
 library(kableExtra)
 library(ggplot2)
 library(dplyr)
+library(rpart)
 ```
 
 
@@ -144,7 +145,24 @@ De las variables existentes a continuación se espedifican aquellas que contienen
 
 Para imputar valores de **edad**, hay varias opciones desde la más sencilla que sería asignar la media a otras opciones como la propuesta en 
 http://jstatsoft.org/article/view/v045i03 Data Analysis with R,  A comprehensive guide to manipulating, analyzing and visualizing data in R
-Pag 373 - 386 
+Pag 373 - 386. Nosotros imputaremos los valores de edad por la media de 
+
+Comprobamos la variable Age
+
+```{r Resumen de Age}
+summary(data$Age)
+```
+
+
+```{r Asignación de Age}
+age_model <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked,
+                       data = data[!is.na(data$Age),], method = "anova")
+
+data$Age[is.na(data$Age)] <- predict(age_model, data[is.na(data$Age),])
+summary(data$Age)
+```
+
+
 
 Se puede analizar si es mejor imputar por la media, mediana u otro método (rpart o mice)
 
@@ -243,10 +261,8 @@ Otra forma de asignar el valor de los puertos de embarque sería asignar el valor
 
 table(data$Embarked)
 
-qplot(data$Embarked, stat="count")
-
-
-
+qplot(Embarked, data = data,  fill= Embarked) + 
+  labs (title = "Distribucion Puerto de Embarque", x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
 ```
 
 ## 3.2. Identificación y tratamiento de valores extremos. 
@@ -274,18 +290,20 @@ outlierKD <- function(dt, var) {
      cat("Propotion (%) of outliers:", round((na2 - na1) / sum(!is.na(var_name))*100, 1), "n")
      cat("Mean of the outliers:", round(mo, 2), "n")
      m2 <- mean(var_name, na.rm = T)
-     cat("Mean without removing outliers:", round(m1, 2), "n")
-     cat("Mean if we remove outliers:", round(m2, 2), "n")
-     response <- readline(prompt="Do you want to remove outliers and to replace with NA? [yes/no]: ")
-     if(response == "y" | response == "yes"){
-          dt[as.character(substitute(var))] <- invisible(var_name)
-          assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
-          cat("Outliers successfully removed", "n")
-          return(invisible(dt))
-     } else{
-          cat("Nothing changed", "n")
-          return(invisible(var_name))
-     }
+     ###
+     # cat("Mean without removing outliers:", round(m1, 2), "n")
+     # cat("Mean if we remove outliers:", round(m2, 2), "n")
+     # response <- readline(prompt="Do you want to remove outliers and to replace with NA? [yes/no]: ")
+     # if(response == "y" | response == "yes"){
+     #      dt[as.character(substitute(var))] <- invisible(var_name)
+     #      assign(as.character(as.list(match.call())$dt), dt, envir = .GlobalEnv)
+     #      cat("Outliers successfully removed", "n")
+     #      return(invisible(dt))
+     # } else{
+     #      cat("Nothing changed", "n")
+     #      return(invisible(var_name))
+     # }
+     ###
 }
 ```
 
@@ -310,6 +328,45 @@ Como es perfectamente aceptable las edades y que haya gente que pagara mucho más
 
 - Análisis estadístico descriptivo.
 
+Se utilizaran las variables de Edad, clase, Genero y puerto de Embarque para realizar el analisis de los datos. 
+
+La distribucion de los pasajeros segun indica el siguiente grafico.
+
+```{r}
+ggplot(data = data) +
+  geom_violin (aes(Pclass, Age, colour = factor(Sex)),draw_quantiles = c(0.25, 0.5, 0.75)) +
+  labs (title = "Distribución de Pasajeros", x= "Clase Pasajeros", y = "Edad" , colour = "Género Pasajero") +
+  theme_bw()
+```
+  
+Con el grafico podemos deducir que 
+1 - Debido a la economia de la epoca, la 3ra clase es donde existe un numero mayor de pasajeros. (ver grafico Distribución Clases Pasajeros)  
+2 - La media de edad de los pasajeros es de 29.8 años y la mediana es de 28 (ver grafico Distribución Edades)   
+3 - Southampton es el puerto donde embarcaron la mayoria de pasajeros, al ser el puerto de origen del trasatlantico (ver grafico Distribucion Puerto de embarque ) 
+
+```{r}
+Test_age <- na.omit(data$Age)
+Test_age <- as.integer(Test_age)
+par(mfrow=c(1,2))
+
+ggplot(data,  aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = 'grey', alpha=0.4) + 
+  geom_vline(aes(xintercept=median(Age, na.rm=T)),
+    colour='blue', linetype='dashed', lwd=1) +
+  geom_vline(aes(xintercept=mean(Age, na.rm=T)),
+  colour='red', linetype='dashed', lwd=1) + 
+  labs (title = "Distribucion Edades", x= "Edad", y = "Cantidad" )
+
+ggplot(data,  aes(x = Pclass)) +
+  geom_histogram(aes(fill = Pclass) ,stat = "count") + 
+  labs (title = "Distribucion Clases", x= "Clase", y = "Cantidad", fill = "Clase Pasajero")
+
+qplot(Sex, data = data,  fill= Sex) +
+  labs (title = "Distribucion Genero", x= "Genero", y = "Cantidad", fill = "Genero Pasajero")
+
+qplot(Embarked, data = data,  fill= Embarked) + 
+  labs (title = "Distribucion Puerto de Embarque", x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
+```
 
 
 - Análisis estadístico inferencial
@@ -319,6 +376,49 @@ Como es perfectamente aceptable las edades y que haya gente que pagara mucho más
 
 
 ## 4.3. Aplicación de pruebas estadísticas para comparar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
+
+1 - Comprobar la hipotesis que la 1ra clase tiene mas posibilidades de Sobrevivir
+H0 : No hay diferencia significativa de sobrevivier entre la clase alta y la clase baja
+H1 : La clase alta tiene mas probabilidades de sobrevivir
+
+```{r}
+Pclass_set <- subset(datostrain, Pclass == 1)
+
+#function for z test
+z.test = function(a, b, n){
+ sample_mean = mean(a)
+ pop_mean = mean(b)
+ c = nrow(n)
+ var_b = var(b)
+ zeta = (sample_mean - pop_mean) / (sqrt(var_b/c))
+ return(zeta)
+}
+
+#call function
+z.test(Pclass_set$Survived, datostrain$Survived, Pclass_set)
+
+```
+El valor de z de 7.42 afirma la hipotesis alternativa, la clase alta tiene mas probabilidades de sobrevivir.  
+
+
+2 - Comprobación de correlación entre variables
+
+````{r}
+chisq.test(data$Sex, data$Pclass)
+
+``` 
+
+Dado que el p valor es menor que 0.05, el genero y la clase son significantes y deben de tomarse en cuenta para realizar cualquier modelo. 
+  
+3 - Regresion
+
+```{r}
+fit <- glm(Survived ~ Age + Pclass + Sex + SibSp + Parch + Fare + Embarked, 
+           data = datostrain, family = binomial(link = 'logit'))
+summary(fit)
+```
+
+Se comprueba que existe una fuerte relación entre la variable dependiente Survived y Edad, Clase y Genero (hombre).
 
 
 # 5. Representación de los reultados a apartir de tablas y gráficas.
