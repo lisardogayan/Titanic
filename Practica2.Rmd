@@ -281,10 +281,67 @@ Se muestra como el puerto con mayor frequencia es S, así que finalmente asignare
 data$Embarked[c(62, 830)] <- 'S'
 ```
 
-Una vez añadidos los valores faltantes, se convierte la variable Embarked a factor.
+
+A continuación trataremos la variable Name, para crear una variable Title, que nos aporte algo de información. 
+
+A partir de Name obtenemos el título de los nombres
+
+```{r,eval=TRUE,echo=TRUE}
+# Mostramos algunos nombres
+head(data$Name)
+```
+
+Podemos clasificar a las personas por su título.
+
+```{r,eval=TRUE,echo=TRUE}
+# Grab passenger title from passenger name
+data$Title <- gsub("^.*, (.*?)\\..*$", "\\1", data$Name)
+```
+
+Mostramos los títulos de las personas que viajaban en el Titanic
+
+```{r,eval=TRUE,echo=TRUE}
+#Mostramos la variable Title en función de sex
+kable(table(data$Title, data$Sex)) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+Podemos reasignar las "Mlle" (Madmoiselle) y "Ms" a "Miss", señoritas y la "Mme" (Madame) a "Mrs" (señora). Las ocurrencias con poca frecuencia las podemos agrupar en otros "Other".
+
+
+```{r,eval=TRUE,echo=TRUE}
+# Reagrupando
+data$Title[data$Title == 'Mlle' | data$Title == 'Ms'] <- 'Miss' 
+data$Title[data$Title == 'Mme']  <- 'Mrs'
+Other <- c('Dona', 'Dr', 'Lady', 'the Countess','Capt', 'Col', 'Don', 'Jonkheer', 'Major', 'Rev', 'Sir')
+data$Title[data$Title %in% Other]  <- 'Other'
+
+```
+
+Volviendo a representarlos en función del sexo.
+
+```{r,eval=TRUE,echo=TRUE}
+# Mostramos el título en función del sexo
+kable(table(data$Title, data$Sex)) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+
+La variable Age se podría discretizar y a partir de SibSp y Parch se podría crear una variable con el tamaño de la familia, pero intentaremos un modelo más sencillo, con las variables tratadas hasta ahora.
+
+
+Una vez añadidos los valores faltantes, se convierte la variable Embarked, Title a factor.
 
 ```{r Conversion a factor de embarked}
 data$Embarked <- as.factor(data$Embarked)
+data$Title <- as.factor(data$Title)
+```
+
+Vuelvemos a añadir la variable Survived y la convertimos a factor.
+
+```{r Survived}
+data$Survived <- datos$Survived
+data$Survived <- as.factor(data$Survived)
 ```
 
 Volvemos a mostrar la tabla con el número de valores faltantes. Recordar que en data, no están los valores de la variable Survived. 
@@ -426,9 +483,6 @@ qplot(Embarked, data = data,  fill= Embarked) +
 
 
 Observamos que la clase más numerosa es la 3ra clase, el sexo predominante es el masculino y el puerto dónde hubo mayor embarque es el de Southampton, al ser el puerto de origen del trasatlántico.
-
-
-- Análisis estadístico inferencial
 
 
 

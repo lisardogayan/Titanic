@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  10 JUN 2019 23:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  11 JUN 2019 00:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1124,51 +1124,57 @@ Package xcolor Warning: Incompatible color definition on input line 764.
 Package xcolor Warning: Incompatible color definition on input line 764.
 
 
-Package xcolor Warning: Incompatible color definition on input line 769.
+Package xcolor Warning: Incompatible color definition on input line 771.
 
 
-Package xcolor Warning: Incompatible color definition on input line 773.
+Package xcolor Warning: Incompatible color definition on input line 776.
 
 
-Package xcolor Warning: Incompatible color definition on input line 773.
+Package xcolor Warning: Incompatible color definition on input line 776.
 
 
-Package xcolor Warning: Incompatible color definition on input line 778.
-
-
-Package xcolor Warning: Incompatible color definition on input line 787.
-
-
-Package xcolor Warning: Incompatible color definition on input line 787.
+Package xcolor Warning: Incompatible color definition on input line 789.
 
 [11 <./Practica2_files/figure-latex/Puertos más frecuentes de embarque-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 819.
+Package xcolor Warning: Incompatible color definition on input line 794.
 
 
-Package xcolor Warning: Incompatible color definition on input line 825.
+Package xcolor Warning: Incompatible color definition on input line 794.
 
 
-Package xcolor Warning: Incompatible color definition on input line 825.
+Package xcolor Warning: Incompatible color definition on input line 798.
+
+
+Package xcolor Warning: Incompatible color definition on input line 804.
+
+
+Package xcolor Warning: Incompatible color definition on input line 804.
+
+
+Package xcolor Warning: Incompatible color definition on input line 852.
 
 
 Package xcolor Warning: Incompatible color definition on input line 860.
 
 
-Package xcolor Warning: Incompatible color definition on input line 898.
+Package xcolor Warning: Incompatible color definition on input line 860.
 
 
-Package xcolor Warning: Incompatible color definition on input line 898.
+Package xcolor Warning: Incompatible color definition on input line 864.
 
 
-Package xcolor Warning: Incompatible color definition on input line 898.
+Package xcolor Warning: Incompatible color definition on input line 870.
+
+
+Package xcolor Warning: Incompatible color definition on input line 870.
+
+
+Package xcolor Warning: Incompatible color definition on input line 895.
 
 [12]
 
-Package xcolor Warning: Incompatible color definition on input line 898.
-
-
-Package xcolor Warning: Incompatible color definition on input line 898.
+Package xcolor Warning: Incompatible color definition on input line 900.
 
 
 Package xcolor Warning: Incompatible color definition on input line 900.
@@ -1177,380 +1183,448 @@ Package xcolor Warning: Incompatible color definition on input line 900.
 Package xcolor Warning: Incompatible color definition on input line 904.
 
 
-Package xcolor Warning: Incompatible color definition on input line 904.
+Package xcolor Warning: Incompatible color definition on input line 909.
 
-<Practica2_files/figure-latex/Outlier 1-1.pdf, id=170, 469.755pt x 325.215pt>
+
+Package xcolor Warning: Incompatible color definition on input line 909.
+
+
+Package xcolor Warning: Incompatible color definition on input line 914.
+
+
+Package xcolor Warning: Incompatible color definition on input line 923.
+
+
+Package xcolor Warning: Incompatible color definition on input line 923.
+
+
+Package xcolor Warning: Incompatible color definition on input line 959.
+
+
+Package xcolor Warning: Incompatible color definition on input line 965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1006.
+
+[13]
+
+Package xcolor Warning: Incompatible color definition on input line 1044.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1044.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1046.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1050.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1050.
+
+<Practica2_files/figure-latex/Outlier 1-1.pdf, id=175, 469.755pt x 325.215pt>
 File: Practica2_files/figure-latex/Outlier 1-1.pdf Graphic file (type pdf)
 <use Practica2_files/figure-latex/Outlier 1-1.pdf>
 Package pdftex.def Info: Practica2_files/figure-latex/Outlier 1-1.pdf  used on 
-input line 906.
+input line 1052.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[14]
 
-Package xcolor Warning: Incompatible color definition on input line 912.
-
-[13 <./Practica2_files/figure-latex/Outlier 1-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 916.
+Package xcolor Warning: Incompatible color definition on input line 1058.
 
 
-Package xcolor Warning: Incompatible color definition on input line 916.
+Package xcolor Warning: Incompatible color definition on input line 1062.
 
-<Practica2_files/figure-latex/Outlier 2-1.pdf, id=182, 469.755pt x 325.215pt>
+
+Package xcolor Warning: Incompatible color definition on input line 1062.
+
+<Practica2_files/figure-latex/Outlier 2-1.pdf, id=180, 469.755pt x 325.215pt>
 File: Practica2_files/figure-latex/Outlier 2-1.pdf Graphic file (type pdf)
 <use Practica2_files/figure-latex/Outlier 2-1.pdf>
 Package pdftex.def Info: Practica2_files/figure-latex/Outlier 2-1.pdf  used on 
-input line 918.
+input line 1064.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (2.7436pt too wide) in paragraph at lines 922--922
+[15 <./Practica2_files/figure-latex/Outlier 1-1.pdf>]
+Overfull \hbox (2.7436pt too wide) in paragraph at lines 1068--1068
 []\T1/lmtt/m/n/10 ## Outliers identified: 171 nPropotion (%) of outliers: 15 nM
 ean of the outliers: 135.25 n[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 945.
+Package xcolor Warning: Incompatible color definition on input line 1091.
 
 
-Package xcolor Warning: Incompatible color definition on input line 953.
+Package xcolor Warning: Incompatible color definition on input line 1099.
 
 
-Package xcolor Warning: Incompatible color definition on input line 953.
+Package xcolor Warning: Incompatible color definition on input line 1099.
 
-<Practica2_files/figure-latex/unnamed-chunk-2-1.pdf, id=183, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-2-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-2-1.pdf  us
-ed on input line 955.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[14 <./Practica2_files/figure-latex/Outlier 2-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 959.
-
-
-Package xcolor Warning: Incompatible color definition on input line 973.
-
-
-Package xcolor Warning: Incompatible color definition on input line 973.
-
-<Practica2_files/figure-latex/unnamed-chunk-3-1.pdf, id=194, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-3-1.pdf  us
-ed on input line 975.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[15 <./Practica2_files/figure-latex/unnamed-chunk-2-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 983.
-
-
-Package xcolor Warning: Incompatible color definition on input line 991.
-
-
-Package xcolor Warning: Incompatible color definition on input line 991.
-
-<Practica2_files/figure-latex/unnamed-chunk-4-1.pdf, id=204, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-4-1.pdf  us
-ed on input line 997.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Package xcolor Warning: Incompatible color definition on input line 999.
-
-[16 <./Practica2_files/figure-latex/unnamed-chunk-3-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1004.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1004.
-
-<Practica2_files/figure-latex/unnamed-chunk-4-2.pdf, id=217, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-4-2.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-4-2.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-4-2.pdf  us
-ed on input line 1006.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Package xcolor Warning: Incompatible color definition on input line 1008.
-
-[17 <./Practica2_files/figure-latex/unnamed-chunk-4-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1014.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1014.
-
-<Practica2_files/figure-latex/unnamed-chunk-4-3.pdf, id=227, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-4-3.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-4-3.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-4-3.pdf  us
-ed on input line 1016.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[18 <./Practica2_files/figure-latex/unnamed-chunk-4-2.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1036.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1041.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1041.
-
-<Practica2_files/figure-latex/unnamed-chunk-5-1.pdf, id=237, 469.755pt x 325.21
-5pt>
-File: Practica2_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf
-)
-<use Practica2_files/figure-latex/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-5-1.pdf  us
-ed on input line 1043.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[19 <./Practica2_files/figure-latex/unnamed-chunk-4-3.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1050.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1055.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1055.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1073.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1078.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1078.
-
-<Practica2_files/figure-latex/unnamed-chunk-7-1.pdf, id=248, 469.755pt x 325.21
+<Practica2_files/figure-latex/unnamed-chunk-7-1.pdf, id=191, 469.755pt x 325.21
 5pt>
 File: Practica2_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf
 )
 <use Practica2_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-7-1.pdf  us
-ed on input line 1080.
+ed on input line 1101.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[20 <./Practica2_files/figure-latex/unnamed-chunk-5-1.pdf>]
+[16 <./Practica2_files/figure-latex/Outlier 2-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1084.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1089.
+Package xcolor Warning: Incompatible color definition on input line 1105.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1089.
+Package xcolor Warning: Incompatible color definition on input line 1119.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1106.
+Package xcolor Warning: Incompatible color definition on input line 1119.
+
+<Practica2_files/figure-latex/unnamed-chunk-8-1.pdf, id=202, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-8-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-8-1.pdf  us
+ed on input line 1121.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[17 <./Practica2_files/figure-latex/unnamed-chunk-7-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1129.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1111.
+Package xcolor Warning: Incompatible color definition on input line 1137.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1111.
+Package xcolor Warning: Incompatible color definition on input line 1137.
 
-[21 <./Practica2_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<Practica2_files/figure-latex/unnamed-chunk-9-1.pdf, id=212, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-9-1.pdf  us
+ed on input line 1143.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1139.
+Package xcolor Warning: Incompatible color definition on input line 1145.
 
+[18 <./Practica2_files/figure-latex/unnamed-chunk-8-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1156.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1156.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1167.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1171.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1171.
+Package xcolor Warning: Incompatible color definition on input line 1150.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1187.
+Package xcolor Warning: Incompatible color definition on input line 1150.
+
+<Practica2_files/figure-latex/unnamed-chunk-9-2.pdf, id=225, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-9-2.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-9-2.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-9-2.pdf  us
+ed on input line 1152.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1154.
+
+[19 <./Practica2_files/figure-latex/unnamed-chunk-9-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1160.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1193.
+Package xcolor Warning: Incompatible color definition on input line 1160.
+
+<Practica2_files/figure-latex/unnamed-chunk-9-3.pdf, id=236, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-9-3.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-9-3.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-9-3.pdf  us
+ed on input line 1162.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[20 <./Practica2_files/figure-latex/unnamed-chunk-9-2.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1176.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1193.
-
-[22]
-
-Package xcolor Warning: Incompatible color definition on input line 1237.
+Package xcolor Warning: Incompatible color definition on input line 1181.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1259.
+Package xcolor Warning: Incompatible color definition on input line 1181.
 
-
-Package xcolor Warning: Incompatible color definition on input line 1259.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1259.
-
-[23]
-
-Package xcolor Warning: Incompatible color definition on input line 1259.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1259.
-
-<Practica2_files/figure-latex/unnamed-chunk-13-1.pdf, id=281, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-10-1.pdf, id=246, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-1.pdf  u
-sed on input line 1261.
+<use Practica2_files/figure-latex/unnamed-chunk-10-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-10-1.pdf  u
+sed on input line 1183.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-2.pdf, id=282, 469.755pt x 325.2
+[21 <./Practica2_files/figure-latex/unnamed-chunk-9-3.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1190.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1195.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1195.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1213.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1218.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1218.
+
+<Practica2_files/figure-latex/unnamed-chunk-12-1.pdf, id=256, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-2.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-2.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-2.pdf  u
-sed on input line 1262.
+<use Practica2_files/figure-latex/unnamed-chunk-12-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-12-1.pdf  u
+sed on input line 1220.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-3.pdf, id=283, 469.755pt x 325.2
+[22 <./Practica2_files/figure-latex/unnamed-chunk-10-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1224.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1229.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1229.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1246.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1251.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1251.
+
+[23 <./Practica2_files/figure-latex/unnamed-chunk-12-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1279.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1296.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1296.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1307.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1311.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1311.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1327.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1333.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1333.
+
+[24]
+
+Package xcolor Warning: Incompatible color definition on input line 1377.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+[25]
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1399.
+
+<Practica2_files/figure-latex/unnamed-chunk-18-1.pdf, id=291, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-3.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-3.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-3.pdf  u
-sed on input line 1263.
+<use Practica2_files/figure-latex/unnamed-chunk-18-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-1.pdf  u
+sed on input line 1401.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-4.pdf, id=284, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-18-2.pdf, id=292, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-4.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-18-2.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-4.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-4.pdf  u
-sed on input line 1264.
+<use Practica2_files/figure-latex/unnamed-chunk-18-2.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-2.pdf  u
+sed on input line 1402.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-5.pdf, id=285, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-18-3.pdf, id=293, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-5.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-18-3.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-5.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-5.pdf  u
-sed on input line 1265.
+<use Practica2_files/figure-latex/unnamed-chunk-18-3.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-3.pdf  u
+sed on input line 1403.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-6.pdf, id=286, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-18-4.pdf, id=294, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-6.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-18-4.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-6.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-6.pdf  u
-sed on input line 1266.
+<use Practica2_files/figure-latex/unnamed-chunk-18-4.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-4.pdf  u
+sed on input line 1404.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<Practica2_files/figure-latex/unnamed-chunk-13-7.pdf, id=287, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-18-5.pdf, id=295, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-13-7.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-18-5.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-13-7.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-13-7.pdf  u
-sed on input line 1267.
+<use Practica2_files/figure-latex/unnamed-chunk-18-5.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-5.pdf  u
+sed on input line 1405.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Practica2_files/figure-latex/unnamed-chunk-18-6.pdf, id=296, 469.755pt x 325.2
+15pt>
+File: Practica2_files/figure-latex/unnamed-chunk-18-6.pdf Graphic file (type pd
+f)
+<use Practica2_files/figure-latex/unnamed-chunk-18-6.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-6.pdf  u
+sed on input line 1406.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Practica2_files/figure-latex/unnamed-chunk-18-7.pdf, id=297, 469.755pt x 325.2
+15pt>
+File: Practica2_files/figure-latex/unnamed-chunk-18-7.pdf Graphic file (type pd
+f)
+<use Practica2_files/figure-latex/unnamed-chunk-18-7.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-7.pdf  u
+sed on input line 1407.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Practica2_files/figure-latex/unnamed-chunk-18-8.pdf, id=298, 469.755pt x 325.2
+15pt>
+File: Practica2_files/figure-latex/unnamed-chunk-18-8.pdf Graphic file (type pd
+f)
+<use Practica2_files/figure-latex/unnamed-chunk-18-8.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-8.pdf  u
+sed on input line 1408.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Practica2_files/figure-latex/unnamed-chunk-18-9.pdf, id=299, 469.755pt x 325.2
+15pt>
+File: Practica2_files/figure-latex/unnamed-chunk-18-9.pdf Graphic file (type pd
+f)
+<use Practica2_files/figure-latex/unnamed-chunk-18-9.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-18-9.pdf  u
+sed on input line 1409.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1261--1268
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
 []
  []
 
-[24 <./Practica2_files/figure-latex/unnamed-chunk-13-1.pdf>] [25 <./Practica2_f
-iles/figure-latex/unnamed-chunk-13-2.pdf>] [26 <./Practica2_files/figure-latex/
-unnamed-chunk-13-3.pdf>] [27 <./Practica2_files/figure-latex/unnamed-chunk-13-4
-.pdf>] [28 <./Practica2_files/figure-latex/unnamed-chunk-13-5.pdf>] [29 <./Prac
-tica2_files/figure-latex/unnamed-chunk-13-6.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1274.
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
+[]
+ []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1290.
+Underfull \hbox (badness 10000) in paragraph at lines 1401--1410
+[]
+ []
+
+[26 <./Practica2_files/figure-latex/unnamed-chunk-18-1.pdf>] [27 <./Practica2_f
+iles/figure-latex/unnamed-chunk-18-2.pdf>] [28 <./Practica2_files/figure-latex/
+unnamed-chunk-18-3.pdf>] [29 <./Practica2_files/figure-latex/unnamed-chunk-18-4
+.pdf>] [30 <./Practica2_files/figure-latex/unnamed-chunk-18-5.pdf>] [31 <./Prac
+tica2_files/figure-latex/unnamed-chunk-18-6.pdf>] [32 <./Practica2_files/figure
+-latex/unnamed-chunk-18-7.pdf>] [33 <./Practica2_files/figure-latex/unnamed-chu
+nk-18-8.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1416.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1290.
+Package xcolor Warning: Incompatible color definition on input line 1432.
 
-<Practica2_files/figure-latex/unnamed-chunk-14-1.pdf, id=350, 469.755pt x 325.2
+
+Package xcolor Warning: Incompatible color definition on input line 1432.
+
+<Practica2_files/figure-latex/unnamed-chunk-19-1.pdf, id=381, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-14-1.pdf  u
-sed on input line 1292.
+<use Practica2_files/figure-latex/unnamed-chunk-19-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-19-1.pdf  u
+sed on input line 1434.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Package xcolor Warning: Incompatible color definition on input line 1294.
+Package xcolor Warning: Incompatible color definition on input line 1436.
 
-[30 <./Practica2_files/figure-latex/unnamed-chunk-13-7.pdf>]
+[34 <./Practica2_files/figure-latex/unnamed-chunk-18-9.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 1310.
+Package xcolor Warning: Incompatible color definition on input line 1452.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1310.
+Package xcolor Warning: Incompatible color definition on input line 1452.
 
-<Practica2_files/figure-latex/unnamed-chunk-15-1.pdf, id=361, 469.755pt x 325.2
+<Practica2_files/figure-latex/unnamed-chunk-20-1.pdf, id=392, 469.755pt x 325.2
 15pt>
-File: Practica2_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (type pd
+File: Practica2_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type pd
 f)
-<use Practica2_files/figure-latex/unnamed-chunk-15-1.pdf>
-Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-15-1.pdf  u
-sed on input line 1312.
+<use Practica2_files/figure-latex/unnamed-chunk-20-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-20-1.pdf  u
+sed on input line 1454.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[31 <./Practica2_files/figure-latex/unnamed-chunk-14-1.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1324.
-[32 <./Practica2_files/figure-latex/unnamed-chunk-15-1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1324.
+[35 <./Practica2_files/figure-latex/unnamed-chunk-19-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1466.
+[36 <./Practica2_files/figure-latex/unnamed-chunk-20-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1466.
 (./Practica2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1324.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1324.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1466.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1466.
 
 Package rerunfilecheck Info: File `Practica2.out' has not changed.
 (rerunfilecheck)             Checksum: D84C03570212B41F7EAAF71F2CC261F0;6856.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1324.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1466.
  ) 
 Here is how much of TeX's memory you used:
- 12734 strings out of 494562
- 186658 string characters out of 6176265
+ 12746 strings out of 494562
+ 187196 string characters out of 6176265
  268210 words of memory out of 5000000
- 16134 multiletter control sequences out of 15000+600000
+ 16142 multiletter control sequences out of 15000+600000
  47909 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  28i,7n,35p,1505b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1566,10 +1640,10 @@ ri12.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmtk10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/l
 m/lmtt10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /lm/lmtti10.pfb>
-Output written on Practica2.pdf (32 pages, 682145 bytes).
+Output written on Practica2.pdf (36 pages, 694196 bytes).
 PDF statistics:
- 431 PDF objects out of 1000 (max. 8388607)
- 338 compressed objects within 4 object streams
- 46 named destinations out of 1000 (max. 500000)
- 212 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 462 PDF objects out of 1000 (max. 8388607)
+ 361 compressed objects within 4 object streams
+ 50 named destinations out of 1000 (max. 500000)
+ 222 words of extra memory for PDF output out of 10000 (max. 10000000)
 
