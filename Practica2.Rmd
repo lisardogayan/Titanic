@@ -27,6 +27,7 @@ library(knitr)
 library(kableExtra)
 library(ggplot2)
 library(dplyr)
+library(stringr)
 library(rpart)
 ```
 
@@ -422,6 +423,30 @@ Se comprueba que existe una fuerte relación entre la variable dependiente Surviv
 
 
 # 5. Representación de los reultados a apartir de tablas y gráficas.
+
+Representamos los datos de las variables.
+
+```{r,eval=TRUE,echo=TRUE}
+# Mostramos un histograma para cada variable cuantitativa o un gráfico de barras en caso de que
+# sea una variable cualitativa.
+for (i in 2:ncol(data)) {
+  if (class(data[,i]) != "factor" & class(data[,i]) != "character")  {
+    hist(data[,i], freq = TRUE, col = c("green"), 
+         main=paste("Distribución de ", 
+                    str_to_title(str_replace(colnames(data[i]), "_", " ")), sep = " "),
+         xlab= str_to_title(str_replace(colnames(data[i]), "_", " ")))
+  }
+  else {
+    if (class(data[,i]) != "chr") {
+      barplot(table(data[,i]),
+            col = c("orange","yellow","blue","red"),
+            main=paste("Distribución de ", 
+                    str_to_title(str_replace(colnames(data[i]), "_", " ")), sep = " "),
+            xlab= str_to_title(str_replace(colnames(data[i]), "_", " ")))
+    }
+  }
+}
+```
 
 
 # 6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problemas?
