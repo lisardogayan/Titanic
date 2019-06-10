@@ -449,6 +449,45 @@ for (i in 2:ncol(data)) {
 ```
 
 
+Creamos un gráfico scatter plot, para ver la correlación de las variables:
+
+Hago un gráfico scatterplot para ver la correlación entre variables.
+
+```{r,eval=TRUE,echo=TRUE}
+# Referencia:
+# https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/r/iris_plots/
+
+# Función para mostrar la correlación
+panel.pearson <- function(x, y, ...) {
+horizontal <- (par("usr")[1] + par("usr")[2]) / 2;
+vertical <- (par("usr")[3] + par("usr")[4]) / 2;
+text(horizontal, vertical, format(abs(cor(x,y)), digits=2))
+}
+# Gráfico de parejas
+pairs(data[c(5,6,7,9)], main = "Data plot en función de las clases", pch = c(22,23,24,25),
+      bg = c("yellow","blue","red") [unclass(data[,'Pclass'])],
+      upper.panel = panel.pearson)
+
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Referencia:
+# https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/r/iris_plots/
+
+# Función para mostrar la correlación
+panel.pearson <- function(x, y, ...) {
+horizontal <- (par("usr")[1] + par("usr")[2]) / 2;
+vertical <- (par("usr")[3] + par("usr")[4]) / 2;
+text(horizontal, vertical, format(abs(cor(x,y)), digits=2))
+}
+# Gráfico de parejas
+pairs(data[c(5,6,7,9)], main = "Data plot en función del sexo", pch = c(22,23,24,25),
+      bg = c("blue","red") [unclass(data[,'Sex'])],
+      upper.panel = panel.pearson)
+
+```
+
+
 # 6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problemas?
 
 

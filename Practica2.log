@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  10 JUN 2019 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.22)  10 JUN 2019 19:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1389,22 +1389,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 1050--1056
 a2_files/figure-latex/unnamed-chunk-7-2.pdf>] [23 <./Practica2_files/figure-lat
 ex/unnamed-chunk-7-3.pdf>] [24 <./Practica2_files/figure-latex/unnamed-chunk-7-
 4.pdf>] [25 <./Practica2_files/figure-latex/unnamed-chunk-7-5.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1067.
+
+Package xcolor Warning: Incompatible color definition on input line 1062.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1078.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1078.
+
+<Practica2_files/figure-latex/unnamed-chunk-8-1.pdf, id=309, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-8-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-8-1.pdf  us
+ed on input line 1080.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Package xcolor Warning: Incompatible color definition on input line 1082.
+
 [26 <./Practica2_files/figure-latex/unnamed-chunk-7-6.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1067.
+
+Package xcolor Warning: Incompatible color definition on input line 1098.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1098.
+
+<Practica2_files/figure-latex/unnamed-chunk-9-1.pdf, id=320, 469.755pt x 325.21
+5pt>
+File: Practica2_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf
+)
+<use Practica2_files/figure-latex/unnamed-chunk-9-1.pdf>
+Package pdftex.def Info: Practica2_files/figure-latex/unnamed-chunk-9-1.pdf  us
+ed on input line 1100.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[27 <./Practica2_files/figure-latex/unnamed-chunk-8-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1112.
+[28 <./Practica2_files/figure-latex/unnamed-chunk-9-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1112.
 (./Practica2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1067.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1067.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1112.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1112.
 
 Package rerunfilecheck Info: File `Practica2.out' has not changed.
 (rerunfilecheck)             Checksum: 7F89661C304E6382CD53AD4C266E3081;6861.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1067.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1112.
  ) 
 Here is how much of TeX's memory you used:
- 12708 strings out of 494562
- 185346 string characters out of 6176265
+ 12718 strings out of 494562
+ 185854 string characters out of 6176265
  268211 words of memory out of 5000000
- 16114 multiletter control sequences out of 15000+600000
+ 16122 multiletter control sequences out of 15000+600000
  47909 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  28i,7n,35p,1505b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1420,10 +1456,10 @@ ri12.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/
 lmtk10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/l
 m/lmtt10.pfb><c:/Users/LG/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public
 /lm/lmtti10.pfb>
-Output written on Practica2.pdf (26 pages, 383692 bytes).
+Output written on Practica2.pdf (28 pages, 514129 bytes).
 PDF statistics:
- 365 PDF objects out of 1000 (max. 8388607)
- 289 compressed objects within 3 object streams
- 40 named destinations out of 1000 (max. 500000)
- 187 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 388 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 197 words of extra memory for PDF output out of 10000 (max. 10000000)
 
