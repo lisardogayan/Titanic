@@ -1718,6 +1718,182 @@ pairs(data[c(5,6,7,9)], main = &quot;Data plot en función del sexo&quot;, pch =
 </div>
 <div id="resolucion-del-problema.-a-partir-de-los-resultados-obtenidos.-cuales-son-las-conclusiones.-los-resultados-permiten-responder-al-problema" class="section level1">
 <h1>6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?</h1>
+<p>Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables.</p>
+<pre class="r"><code># Referencia
+# https://www.kaggle.com/thilakshasilva/predicting-titanic-survival-using-five-algorithms#exploratory-data-analysis
+# Volvemos a partir el conjunto de datos
+titanic_train &lt;- data[1:891, c(&quot;Survived&quot;,&quot;Pclass&quot;,&quot;Sex&quot;,&quot;Age&quot;,&quot;SibSp&quot;,&quot;Parch&quot;,&quot;Fare&quot;,&quot;Embarked&quot;,&quot;Title&quot;)]
+titanic_test &lt;- data[892:1309, c(&quot;Pclass&quot;,&quot;Sex&quot;,&quot;Age&quot;,&quot;SibSp&quot;,&quot;Parch&quot;,&quot;Fare&quot;,&quot;Embarked&quot;,&quot;Title&quot;)]</code></pre>
+<p>Utilizaremos una parte del conjunto de train del que conocemos los resultados, para validar los resultados.</p>
+<pre class="r"><code># Volvemos a partir el conjunto de datos
+set.seed(198)
+particion = sample.split(titanic_train$Survived, SplitRatio = 0.8)
+train = subset(titanic_train, particion == TRUE)
+test = subset(titanic_train, particion == FALSE)</code></pre>
+<pre class="r"><code># Referencia:
+# https://rpubs.com/emilopezcano/logit
+# Modelo de regresión logística
+titanic.logit &lt;- glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title,
+                    data = titanic_train, family = &quot;binomial&quot;(link=&quot;logit&quot;))
+summary(titanic.logit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Survived ~ Pclass + Sex + Age + SibSp + Parch + 
+##     Fare + Embarked + Title, family = binomial(link = &quot;logit&quot;), 
+##     data = titanic_train)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.3878  -0.5480  -0.3801   0.5353   2.5499  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  19.665733 504.958265   0.039 0.968934    
+## Pclass2      -1.130844   0.330031  -3.426 0.000611 ***
+## Pclass3      -2.243296   0.331563  -6.766 1.33e-11 ***
+## Sexmale     -15.212933 504.957877  -0.030 0.975966    
+## Age          -0.028446   0.009691  -2.935 0.003331 ** 
+## SibSp        -0.569158   0.126612  -4.495 6.95e-06 ***
+## Parch        -0.361322   0.135575  -2.665 0.007697 ** 
+## Fare          0.003362   0.002653   1.267 0.205055    
+## EmbarkedQ    -0.071733   0.395059  -0.182 0.855916    
+## EmbarkedS    -0.408573   0.251683  -1.623 0.104512    
+## TitleMiss   -15.772521 504.958131  -0.031 0.975082    
+## TitleMr      -3.508822   0.540508  -6.492 8.49e-11 ***
+## TitleMrs    -14.972348 504.958197  -0.030 0.976346    
+## TitleOther   -3.543153   0.781496  -4.534 5.79e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1186.66  on 890  degrees of freedom
+## Residual deviance:  724.73  on 877  degrees of freedom
+## AIC: 752.73
+## 
+## Number of Fisher Scoring iterations: 13</code></pre>
+<p>Vemos como hay variables que no tienen tanta importancia en el clasificador como Sex y Embarked.</p>
+<p>Aplicamos la función step para ir quitando estas variables que no tienen tanta importancia.</p>
+<pre class="r"><code># Modelo de regresión logística
+titanic.logit &lt;- step(titanic.logit)</code></pre>
+<pre><code>## Start:  AIC=752.73
+## Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + 
+##     Title
+## 
+##            Df Deviance    AIC
+## - Embarked  2   727.94 751.94
+## - Fare      1   726.55 752.55
+## &lt;none&gt;          724.73 752.73
+## - Sex       1   730.19 756.19
+## - Parch     1   732.36 758.36
+## - Age       1   733.75 759.75
+## - SibSp     1   750.31 776.31
+## - Pclass    2   774.74 798.74
+## - Title     4   782.95 802.95
+## 
+## Step:  AIC=751.94
+## Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Title
+## 
+##          Df Deviance    AIC
+## &lt;none&gt;        727.94 751.94
+## - Fare    1   730.69 752.69
+## - Sex     1   733.31 755.31
+## - Parch   1   736.27 758.27
+## - Age     1   737.68 759.68
+## - SibSp   1   756.65 778.65
+## - Pclass  2   780.00 800.00
+## - Title   4   786.70 802.70</code></pre>
+<pre class="r"><code># Modelo de regresión logística
+summary(titanic.logit)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Survived ~ Pclass + Sex + Age + SibSp + Parch + 
+##     Fare + Title, family = binomial(link = &quot;logit&quot;), data = titanic_train)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.4621  -0.5405  -0.3886   0.5325   2.6471  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  19.410542 498.876533   0.039 0.968963    
+## Pclass2      -1.223069   0.324793  -3.766 0.000166 ***
+## Pclass3      -2.248701   0.321985  -6.984 2.87e-12 ***
+## Sexmale     -15.189027 498.876155  -0.030 0.975711    
+## Age          -0.029122   0.009569  -3.043 0.002340 ** 
+## SibSp        -0.593281   0.125619  -4.723 2.33e-06 ***
+## Parch        -0.373677   0.134520  -2.778 0.005472 ** 
+## Fare          0.004043   0.002633   1.535 0.124694    
+## TitleMiss   -15.741626 498.876416  -0.032 0.974828    
+## TitleMr      -3.554349   0.537396  -6.614 3.74e-11 ***
+## TitleMrs    -14.973049 498.876481  -0.030 0.976056    
+## TitleOther   -3.514816   0.775871  -4.530 5.89e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1186.66  on 890  degrees of freedom
+## Residual deviance:  727.94  on 879  degrees of freedom
+## AIC: 751.94
+## 
+## Number of Fisher Scoring iterations: 13</code></pre>
+<pre class="r"><code># Modelo de regresión logística
+titanic.logit &lt;- step(titanic.logit)</code></pre>
+<pre><code>## Start:  AIC=751.94
+## Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Title
+## 
+##          Df Deviance    AIC
+## &lt;none&gt;        727.94 751.94
+## - Fare    1   730.69 752.69
+## - Sex     1   733.31 755.31
+## - Parch   1   736.27 758.27
+## - Age     1   737.68 759.68
+## - SibSp   1   756.65 778.65
+## - Pclass  2   780.00 800.00
+## - Title   4   786.70 802.70</code></pre>
+<pre class="r"><code># Modelo de regresión logística
+vif(titanic.logit)</code></pre>
+<pre><code>##                GVIF Df GVIF^(1/(2*Df))
+## Pclass 2.169085e+00  2        1.213582
+## Sex    6.818832e+06  1     2611.289253
+## Age    1.991458e+00  1        1.411190
+## SibSp  1.614081e+00  1        1.270465
+## Parch  1.458854e+00  1        1.207830
+## Fare   1.586248e+00  1        1.259464
+## Title  1.492792e+07  4        7.884060</code></pre>
+<pre class="r"><code># Modelo de regresión logística
+durbinWatsonTest(titanic.logit)</code></pre>
+<pre><code>##  lag Autocorrelation D-W Statistic p-value
+##    1       0.0204161      1.958783   0.568
+##  Alternative hypothesis: rho != 0</code></pre>
+<pre class="r"><code># Comprobamos los resultados en el conjunto de test de validación
+prob_pred = predict(titanic.logit, type = 'response', newdata = test)
+y_pred = ifelse(prob_pred &gt; 0.5, 1, 0)
+head(y_pred)</code></pre>
+<pre><code>##  1  2 12 13 16 22 
+##  0  1  1  0  1  0</code></pre>
+<p>Comprobamos la matriz de confusion</p>
+<pre class="r"><code># Comprobamos la matriz de confusión
+table(test$Survived, y_pred &gt; 0.5)</code></pre>
+<pre><code>##    
+##     FALSE TRUE
+##   0    97   13
+##   1    17   51</code></pre>
+<pre class="r"><code>#kable(table(test$Survived, (y_pred &gt; 0.5)) %&gt;%
+#  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = F, position = &quot;left&quot;)</code></pre>
+<p>Calculamos la precisión del modelo.</p>
+<pre class="r"><code>error &lt;- mean(test$Survived != y_pred) # Misclassification error
+paste('Accuracy',round(1-error,4))</code></pre>
+<pre><code>## [1] &quot;Accuracy 0.8315&quot;</code></pre>
+<p>Finalmente, calculamos los valores finales</p>
+<pre class="r"><code># Calculamos las predicciones
+titanic_prob = predict(titanic.logit, newdata = titanic_test)
+titanic_pred = ifelse(titanic_prob &gt; 0.5, 1, 0)</code></pre>
+<pre class="r"><code># Guardamos los resultados
+results &lt;- data.frame(PassengerID = data[892:1309,&quot;PassengerId&quot;], Survived = titanic_pred)</code></pre>
+<pre class="r"><code># Guardamos el archivo
+write.csv(results, file = 'PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)</code></pre>
 </div>
 <div id="codigo.-hay-que-adjuntar-el-codigo-preferiblemente-en-r-con-el-que-se-ha-realizado-la-limpieza-analisis-y-represntacion-de-los-datos." class="section level1">
 <h1>7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.</h1>

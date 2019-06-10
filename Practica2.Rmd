@@ -5,11 +5,6 @@ author:
 - "José Luis Melo"
 date: '`r format(Sys.Date(),"%e %B, %Y")`'
 output:
-  pdf_document:
-    highlight: default
-    number_sections: no
-    toc: yes
-    toc_depth: 3
   html_document:
     highlight: default
     number_sections: no
@@ -17,6 +12,11 @@ output:
     toc: yes
     toc_depth: 3
     toc_float: yes
+  pdf_document:
+    highlight: default
+    number_sections: no
+    toc: yes
+    toc_depth: 3
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -28,6 +28,8 @@ library(kableExtra)
 library(ggplot2)
 library(dplyr)
 library(stringr)
+library(caTools)
+library(car)
 library(rpart)
 library(ggpubr)
 ```
@@ -655,6 +657,111 @@ pairs(data[c(5,6,7,9)], main = "Data plot en función del sexo", pch = c(22,23,24
 # 6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?
 
 
+Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables.
+
+```{r,eval=TRUE,echo=TRUE}
+# Referencia
+# https://www.kaggle.com/thilakshasilva/predicting-titanic-survival-using-five-algorithms#exploratory-data-analysis
+# Volvemos a partir el conjunto de datos
+titanic_train <- data[1:891, c("Survived","Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
+titanic_test <- data[892:1309, c("Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
+```
+
+
+Utilizaremos una parte del conjunto de train del que conocemos los resultados, para validar los resultados.
+
+```{r,eval=TRUE,echo=TRUE}
+# Volvemos a partir el conjunto de datos
+set.seed(198)
+particion = sample.split(titanic_train$Survived, SplitRatio = 0.8)
+train = subset(titanic_train, particion == TRUE)
+test = subset(titanic_train, particion == FALSE)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Referencia:
+# https://rpubs.com/emilopezcano/logit
+# Modelo de regresión logística
+titanic.logit <- glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title,
+                    data = titanic_train, family = "binomial"(link="logit"))
+summary(titanic.logit)
+```
+
+
+Vemos como hay variables que no tienen tanta importancia en el clasificador como Sex y Embarked.
+
+Aplicamos la función step para ir quitando estas variables que no tienen tanta importancia.
+
+
+```{r,eval=TRUE,echo=TRUE}
+# Modelo de regresión logística
+titanic.logit <- step(titanic.logit)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Modelo de regresión logística
+summary(titanic.logit)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Modelo de regresión logística
+titanic.logit <- step(titanic.logit)
+```
+
+
+```{r,eval=TRUE,echo=TRUE}
+# Modelo de regresión logística
+vif(titanic.logit)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Modelo de regresión logística
+durbinWatsonTest(titanic.logit)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Comprobamos los resultados en el conjunto de test de validación
+prob_pred = predict(titanic.logit, type = 'response', newdata = test)
+y_pred = ifelse(prob_pred > 0.5, 1, 0)
+head(y_pred)
+```
+
+Comprobamos la matriz de confusion
+
+```{r,eval=TRUE,echo=TRUE}
+# Comprobamos la matriz de confusión
+table(test$Survived, y_pred > 0.5)
+
+#kable(table(test$Survived, (y_pred > 0.5)) %>%
+#  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+Calculamos la precisión del modelo.
+
+```{r,eval=TRUE,echo=TRUE}
+error <- mean(test$Survived != y_pred) # Misclassification error
+paste('Accuracy',round(1-error,4))
+```
+
+Finalmente, calculamos los valores finales
+
+```{r,eval=TRUE,echo=TRUE}
+# Calculamos las predicciones
+titanic_prob = predict(titanic.logit, newdata = titanic_test)
+titanic_pred = ifelse(titanic_prob > 0.5, 1, 0)
+```
+
+```{r,eval=TRUE,echo=TRUE}
+# Guardamos los resultados
+results <- data.frame(PassengerID = data[892:1309,"PassengerId"], Survived = titanic_pred)
+```
+
+
+```{r,eval=TRUE,echo=TRUE}
+# Guardamos el archivo
+write.csv(results, file = 'PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)
+```
 
 
 # 7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.
