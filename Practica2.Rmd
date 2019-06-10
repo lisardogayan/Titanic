@@ -136,7 +136,8 @@ Volvemos a mostrar los datos que contienen ceros o elementos vacíos.
 ```{r Check valores faltantes bis}
 # Busco primero qué variables tienen valores perdidos
 missing_numbers <- sapply(datos, function(x) {sum(is.na(x))})
-kable(data.frame(Variables = names(missing_numbers), Datos_faltantes= as.vector(missing_numbers))) %>%
+kable(data.frame(Variables = names(missing_numbers), 
+                 Datos_faltantes= as.vector(missing_numbers))) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
   
@@ -155,8 +156,13 @@ Comprobamos la variable Age
 summary(data$Age)
 ```
 
+Se comprueba como hay 263 valores nulos. Para asignar el valor de la edad aplicamos el algoritmo rpart, que es un árbol de regresión.
+
 
 ```{r Asignación de Age}
+# Referencia: 
+# https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/rpart
+
 age_model <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked,
                        data = data[!is.na(data$Age),], method = "anova")
 
@@ -165,8 +171,7 @@ summary(data$Age)
 ```
 
 
-
-Se puede analizar si es mejor imputar por la media, mediana u otro método (rpart o mice)
+También se podrían imputar por otros métodos, como la media, mediana o mice en lugar del usado rpart.
 
 - Fare: *existe 1 valor nulo.*     
 Para imputar valores **Fare**  
@@ -237,6 +242,8 @@ ggplot(embarked_pass_1, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
     colour='blue', linetype='dashed', lwd=1) 
 
 ```
+
+
 La tarifa de 80 coincide con la media de los pasajeros de primera clase que embarcaron en C, por lo que se podría imputar este puerto. 
 
 ```{r Imputacion Embarco}
@@ -255,7 +262,7 @@ ggplot(embarked_pass_2, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
 
 ```
 
-En este caso cualquiera de los 3 puertos tendría una media cercana a 80. Como no creemos que el puerto de embarque este correlacionado con la supervivencia, podemos dejar "C"
+En este caso cualquiera de los 3 puertos tendría una media cercana a 80. Como no creemos que el puerto de embarque este correlacionado con la supervivencia, podríamos dejar cualquiera.
 
 Otra forma de asignar el valor de los puertos de embarque sería asignar el valor más frequente. Calculamos cuantas veces aparece cada puerto de embarque.
 
@@ -264,8 +271,42 @@ Otra forma de asignar el valor de los puertos de embarque sería asignar el valor
 table(data$Embarked)
 
 qplot(Embarked, data = data,  fill= Embarked) + 
-  labs (title = "Distribucion Puerto de Embarque", x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
+  labs (title = "Distribucion Puerto de Embarque", 
+        x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
 ```
+
+Se muestra como el puerto con mayor frequencia es S, así que finalmente asignaremos este valor.
+
+```{r Imputacion Embarco Definitiva}
+data$Embarked[c(62, 830)] <- 'S'
+```
+
+Una vez añadidos los valores faltantes, se convierte la variable Embarked a factor.
+
+```{r Conversion a factor de embarked}
+data$Embarked <- as.factor(data$Embarked)
+```
+
+Volvemos a mostrar la tabla con el número de valores faltantes. Recordar que en data, no están los valores de la variable Survived. 
+
+```{r Check valores faltantes final}
+# Busco primero qué variables tienen valores perdidos
+missing_numbers <- sapply(data, function(x) {sum(is.na(x))})
+kable(data.frame(Variables = names(missing_numbers), 
+                 Datos_faltantes= as.vector(missing_numbers))) %>%
+  kable_styling(bootstrap_options = "striped", 
+                full_width = F, position = "left")
+```
+
+Representamos la tabla con los tipos de los valores.
+
+```{r Tipos variables final}
+tipos_new <- sapply(data, class)
+kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_new))) %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+
 
 ## 3.2. Identificación y tratamiento de valores extremos. 
 
@@ -330,26 +371,27 @@ Como es perfectamente aceptable las edades y que haya gente que pagara mucho más
 
 - Análisis estadístico descriptivo.
 
-Se utilizaran las variables de Edad, clase, Genero y puerto de Embarque para realizar el analisis de los datos. 
+Se utilizarán las variables de Edad, Clase, Género y Puerto de Embarque para realizar el análisis de los datos. 
 
-La distribucion de los pasajeros segun indica el siguiente grafico.
+La distribución de los pasajeros según indica el siguiente grafico.
 
 ```{r}
 ggplot(data = data) +
   geom_violin (aes(Pclass, Age, colour = factor(Sex)),draw_quantiles = c(0.25, 0.5, 0.75)) +
-  labs (title = "Distribución de Pasajeros", x= "Clase Pasajeros", y = "Edad" , colour = "Género Pasajero") +
+  labs (title = "Distribución de Pasajeros", x= "Clase Pasajeros", 
+        y = "Edad" , colour = "Género Pasajero") +
   theme_bw()
 ```
   
-Con el grafico podemos deducir que 
-1 - Debido a la economia de la epoca, la 3ra clase es donde existe un numero mayor de pasajeros. (ver grafico Distribución Clases Pasajeros)  
-2 - La media de edad de los pasajeros es de 29.8 años y la mediana es de 28 (ver grafico Distribución Edades)   
-3 - Southampton es el puerto donde embarcaron la mayoria de pasajeros, al ser el puerto de origen del trasatlantico (ver grafico Distribucion Puerto de embarque ) 
+
+
+
+Representando la edad de los pasajeros obtenemos:
 
 ```{r}
-Test_age <- na.omit(data$Age)
-Test_age <- as.integer(Test_age)
-par(mfrow=c(1,2))
+#Test_age <- na.omit(data$Age)
+#Test_age <- as.integer(Test_age)
+
 
 ggplot(data,  aes(x = Age)) +
   geom_histogram(binwidth = 5, fill = 'grey', alpha=0.4) + 
@@ -359,41 +401,84 @@ ggplot(data,  aes(x = Age)) +
   colour='red', linetype='dashed', lwd=1) + 
   labs (title = "Distribucion Edades", x= "Edad", y = "Cantidad" )
 
+```
+
+Podemos observar que la media de edad de los pasajeros es de 29.8 años y la mediana es de 28.  
+
+
+Finalmente realizando unos gráficos de las variables principales, clase, sexo y puerto de embarque.
+
+```{r}
+
+par(mfrow=c(1,2))
+
 ggplot(data,  aes(x = Pclass)) +
   geom_histogram(aes(fill = Pclass) ,stat = "count") + 
-  labs (title = "Distribucion Clases", x= "Clase", y = "Cantidad", fill = "Clase Pasajero")
+  labs (title = "Distribución Clases", x= "Clase", y = "Cantidad", fill = "Clase Pasajero")
 
 qplot(Sex, data = data,  fill= Sex) +
-  labs (title = "Distribucion Genero", x= "Genero", y = "Cantidad", fill = "Genero Pasajero")
+  labs (title = "Distribución Género", x= "Género", y = "Cantidad", fill = "Género Pasajero")
 
 qplot(Embarked, data = data,  fill= Embarked) + 
-  labs (title = "Distribucion Puerto de Embarque", x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
+  labs (title = "Distribución Puerto de Embarque", x= "Puerto", 
+        y = "Cantidad", fill = "Puerto de embarque")
 ```
+
+
+Observamos que la clase más numerosa es la 3ra clase, el sexo predominante es el masculino y el puerto dónde hubo mayor embarque es el de Southampton, al ser el puerto de origen del trasatlántico.
 
 
 - Análisis estadístico inferencial
 
 
+
+
 ## 4.2. Comprobación de la normalidad y homogeneidad de la varianza.
 
-Comprobamos la normalidad, gráficamente:
+Comprobar la normalidad y homogeneidad de la varianza tiene sentido para la variables numéricas Age y Fare.
+
+Comprobamos la normalidad, gráficamente, para Age:
 
 ```{r,eval=TRUE,echo=TRUE}
 #Hago que los dos ejes tengan el mismo tamaño.
 ggqqplot(data$Age, ggtheme = theme(aspect.ratio=1), title = "Age")
+```
 
+
+También se puede aplicar un test Shapiro-Wilk, en el que la hipótesis nula, (H0) es que la muestra proviene de una población normalmente distribuida y la hipótesis alternativa (H1), que la muestra no proviene de una población normalmente distribuida.
+
+```{r,eval=TRUE,echo=TRUE}
+# Aplico el test
+shapiro.test(data$Age)
+```
+
+El valor de W está próximo a 1 y el p-value < 0.05, (el p-value, debería ser p-value>0.05 para seguir una distribución normal) así que se rechaza la hipótesis nula y la muestra no sigue una distribución normal. Como se ve en la gráfica hay menos jóvenes y más con elevada edad que habría en una distribución normal.
+
+
+
+
+A continuación, comprobamos la normalidad de Fare, gráficamente:
+```{r,eval=TRUE,echo=TRUE}
+#Hago que los dos ejes tengan el mismo tamaño.
 ggqqplot(data$Fare, ggtheme = theme(aspect.ratio=1), title = "Fare")
 
 ```
 
+Aplicamos el test de Shapiro-Wilk a la variable Fare
 
+```{r,eval=TRUE,echo=TRUE}
+# Aplico el test
+shapiro.test(data$Fare)
+```
 
+En este caso ni siquiera W está cercano a 1, así que se rechaza la hipótesis nula y tampoco sigue una distribución normal.
 
 
 ## 4.3. Aplicación de pruebas estadísticas para comparar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
 
 1 - Comprobar la hipotesis que la 1ra clase tiene mas posibilidades de Sobrevivir
-H0 : No hay diferencia significativa de sobrevivier entre la clase alta y la clase baja
+
+H0 : No hay diferencia significativa de sobrevivir entre la clase alta y la clase baja
 H1 : La clase alta tiene mas probabilidades de sobrevivir
 
 ```{r}
