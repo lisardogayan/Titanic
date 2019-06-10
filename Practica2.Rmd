@@ -29,6 +29,7 @@ library(ggplot2)
 library(dplyr)
 library(stringr)
 library(rpart)
+library(ggpubr)
 ```
 
 
@@ -374,6 +375,19 @@ qplot(Embarked, data = data,  fill= Embarked) +
 
 
 ## 4.2. Comprobación de la normalidad y homogeneidad de la varianza.
+
+Comprobamos la normalidad, gráficamente:
+
+```{r,eval=TRUE,echo=TRUE}
+#Hago que los dos ejes tengan el mismo tamaño.
+ggqqplot(data$Age, ggtheme = theme(aspect.ratio=1), title = "Age")
+
+ggqqplot(data$Fare, ggtheme = theme(aspect.ratio=1), title = "Fare")
+
+```
+
+
+
 
 
 ## 4.3. Aplicación de pruebas estadísticas para comparar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
