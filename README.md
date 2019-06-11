@@ -4,7 +4,7 @@
 
  
 
-El objetivo de esta actividad es el tratamiento de un dataset, correspondiente a los datos sobre la supervivencia de los pasajeros del Titanic.
+El objetivo de esta actividad es el tratamiento de un dataset, correspondiente a los datos sobre la supervivencia de los pasajeros del Titanic, con el objetivo de hacer predicciones sobre la supervivencia en otro conjunto de pasajeros.
 
 # Autores:
 
