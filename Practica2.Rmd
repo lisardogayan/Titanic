@@ -1,7 +1,7 @@
 ---
-title: "Practica 2."
+title: "Práctica 2."
 author: 
-- "Lisardo Gayán Tremps"
+- "Lisardo Gayán"
 - "José Luis Melo"
 date: '`r format(Sys.Date(),"%e %B, %Y")`'
 output:
@@ -18,6 +18,7 @@ output:
     toc: yes
     toc_depth: 3
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -35,7 +36,8 @@ library(ggpubr)
 ```
 
 
-# 1 - Descripción del dataset. ¿Por qué es importante y qué pregunta/problema pretende responder?
+# 1 - Descripción del dataset.  
+**¿Por qué es importante y qué pregunta/problema pretende responder?**  
 
 El dataset de Titanic: Machine Learning from Disaster se registran los datos de los pasajeros del famoso trasatlántico y se utiliza para predecir los supervivientes. Los datos estan divididos en dos dataset, uno de test y otro entrenamiento, para la creación de modelos de predicción.
 
@@ -51,28 +53,27 @@ str(datostrain)
 
 Se observa como consta de 891 muestras y 12 variables, entre ellas Survived.
 
-Posteiormente el dataset test.
+Posteriormente el dataset test.
 
 ```{r Importacion datos test}
 datostest <- read.csv ("./data/test.csv", stringsAsFactors = FALSE, na.strings = c("NA", ""))
 str(datostest)
 ```
 
-Se observa como tiene 418 muestra, y 11 variables. La variable Survived no aparece porque es la que se tiene que predecir.
- 
+Se compone de 418 observaciones y 11 variables. La variable Survived no aparece debido a que es la que se debe predecir.
+   
 A continuacion, a la hora de fusionar los datos caben dos posibilidades, asignar "NA" a la variable datostest$Survived o no considerar los datos de survived en train. Se importan, fusionan los datos y se revisa la estructura inicial de los datos.  
 
 ```{r Unión datos}
-
 datostest$Survived <- NA
 datos <- rbind(datostrain, datostest)
 str(datos)
 ```
 
-A continuación comprobamos los datos que faltan
+A continuación comprobamos los datos que faltan.
 
 ```{r Check valores faltantes}
-# Busco primero qué variables tienen valores perdidos
+# Buscamos primero qué variables tienen valores perdidos
 missing_numbers <- sapply(datos, function(x) {sum(is.na(x))})
 kable(data.frame(Variables = names(missing_numbers), Datos_faltantes= as.vector(missing_numbers))) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
@@ -80,11 +81,10 @@ kable(data.frame(Variables = names(missing_numbers), Datos_faltantes= as.vector(
 
 Podemos observar, que en Survived, salen los 418, que tenemos que predecir, por lo que todos los valores de train están informados.
 
-A continuación se detallan las variables y su tipo inicial, este último, se modificara para su mejor analisis. 
+A continuación se detallan las variables y su tipo inicial, este último, se modificara para su mejor análisis. 
 
 
 ```{r Prescindimos de survived}
-
 # datostrain1 <- datostrain[,-2]
 # data <- rbind(datostrain1, datostest) # Fusion datasets
 data <- datos[,-2]
@@ -96,6 +96,7 @@ tipos <- sapply(data, class)
 kable(data.frame(Variables = names(tipos), Tipo_Variable= as.vector(tipos))) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
+
 Las variables, que no tienen datos faltantes, class y sex, se convertiran a factor. La variable cabin tiene muchos datos faltantes, así que en un primer momento no se utilizará. 
 
 ```{r Conversion Variables}
@@ -104,7 +105,6 @@ data$Pclass <- as.factor(data$Pclass)
 data$Sex <- as.factor(data$Sex)
 #data$Embarked <- as.factor(data$Embarked)
 #data$Cabin <- as.factor(data$Cabin)
-
 tipos_new <- sapply(data, class)
 kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_new))) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
@@ -130,7 +130,7 @@ Embarked: Variable de tipo factor que indica el puerto de embarque, **existen 2 
   
 # 3 - Limpieza de datos
 
-## 3.1. ¿Los datos contienen ceros o elementos vacíos? ¿Cómo gestionarías cada uno de estos casos?
+**3.1. ¿Los datos contienen ceros o elementos vacíos? ¿Cómo gestionarías cada uno de estos casos?**  
 
 Volvemos a mostrar los datos que contienen ceros o elementos vacíos.
 
@@ -148,9 +148,7 @@ De las variables existentes a continuación se espedifican aquellas que contienen
 
 - Age: *existen 263 valores nulos.*  
 
-Para imputar valores de **edad**, hay varias opciones desde la más sencilla que sería asignar la media a otras opciones como la propuesta en 
-http://jstatsoft.org/article/view/v045i03 Data Analysis with R,  A comprehensive guide to manipulating, analyzing and visualizing data in R
-Pag 373 - 386. Nosotros imputaremos los valores de edad por la media de 
+Para imputar valores de **edad**, se aplicara el algoritmo rpart, que es un árbol de regresión.  
 
 Comprobamos la variable Age
 
@@ -158,20 +156,16 @@ Comprobamos la variable Age
 summary(data$Age)
 ```
 
-Se comprueba como hay 263 valores nulos. Para asignar el valor de la edad aplicamos el algoritmo rpart, que es un árbol de regresión.
-
+Se comprueba como hay 263 valores nulos. 
 
 ```{r Asignación de Age}
 # Referencia: 
 # https://www.rdocumentation.org/packages/rpart/versions/4.1-15/topics/rpart
-
 age_model <- rpart(Age ~ Pclass + Sex + SibSp + Parch + Fare + Embarked,
                        data = data[!is.na(data$Age),], method = "anova")
-
 data$Age[is.na(data$Age)] <- predict(age_model, data[is.na(data$Age),])
 summary(data$Age)
 ```
-
 
 También se podrían imputar por otros métodos, como la media, mediana o mice en lugar del usado rpart.
 
@@ -184,8 +178,9 @@ data[is.na(data$Fare),]
 M_fare<- subset(data,data$Pclass == '3' & data$Embarked == 'S')
 mean(M_fare$Fare, na.rm = T)
 median(M_fare$Fare, na.rm = T)
-
 ``` 
+
+
 ```{r Plot nulos Fare}
 ggplot(M_fare,  aes(x = Fare)) +
   geom_density(fill = 'grey', alpha=0.4) + 
@@ -194,7 +189,8 @@ ggplot(M_fare,  aes(x = Fare)) +
   geom_vline(aes(xintercept=mean(Fare, na.rm=T)),
   colour='red', linetype='dashed', lwd=1)
 ``` 
-Observamos como al realizar la gráfica nos dice que hay un valor nulo.
+  
+Observamos como al realizar la gráfica la advertencia *"Removed 1 rows containing non-finite values (stat_density)"* nos indica que hay un valor nulo.  
 
 La tarifa de 8.05 coincide con la mediana de los pasajeros de tercera clase que embarcaron en S, por lo que se podría imputar este valor. 
 
@@ -215,7 +211,7 @@ ggplot(M_fare,  aes(x = Fare)) +
   colour='red', linetype='dashed', lwd=1)
 ``` 
 
-Ahora ya no sale que haya un valor nulo en fare.
+Una vez imputado el valor ya no existe advertencia lo que significa que en Fare ya no hay un valor nulo.
 
 - Cabin: *existen 1014 valores perdidos.*     
 Para imputar valores **Cabin**  
@@ -229,7 +225,6 @@ Mostramos los valores perdidos
 
 ```{r}
 data[is.na(data$Embarked),]
-
 ```
 
 Al ser unicamente dos valores perdidos, se podría sustituir los valores por la media, en base a otros pasajeros de la misma clase y tarifa (Fare). 
@@ -242,7 +237,6 @@ ggplot(embarked_pass_1, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
   geom_boxplot() +
   geom_hline(aes(yintercept=80), 
     colour='blue', linetype='dashed', lwd=1) 
-
 ```
 
 
@@ -261,7 +255,6 @@ ggplot(embarked_pass_2, aes(x = Embarked, y = Fare, fill = factor(Pclass))) +
   geom_boxplot() +
   geom_hline(aes(yintercept=80), 
     colour='blue', linetype='dashed', lwd=1) 
-
 ```
 
 En este caso cualquiera de los 3 puertos tendría una media cercana a 80. Como no creemos que el puerto de embarque este correlacionado con la supervivencia, podríamos dejar cualquiera.
@@ -269,9 +262,7 @@ En este caso cualquiera de los 3 puertos tendría una media cercana a 80. Como no
 Otra forma de asignar el valor de los puertos de embarque sería asignar el valor más frequente. Calculamos cuantas veces aparece cada puerto de embarque.
 
 ```{r Puertos más frecuentes de embarque}
-
 table(data$Embarked)
-
 qplot(Embarked, data = data,  fill= Embarked) + 
   labs (title = "Distribucion Puerto de Embarque", 
         x= "Puerto", y = "Cantidad", fill = "Puerto de embarque")
@@ -317,7 +308,6 @@ data$Title[data$Title == 'Mlle' | data$Title == 'Ms'] <- 'Miss'
 data$Title[data$Title == 'Mme']  <- 'Mrs'
 Other <- c('Dona', 'Dr', 'Lady', 'the Countess','Capt', 'Col', 'Don', 'Jonkheer', 'Major', 'Rev', 'Sir')
 data$Title[data$Title %in% Other]  <- 'Other'
-
 ```
 
 Volviendo a representarlos en función del sexo.
@@ -367,7 +357,7 @@ kable(data.frame(Variables = names(tipos_new), Tipo_Variable= as.vector(tipos_ne
 
 
 
-## 3.2. Identificación y tratamiento de valores extremos. 
+**3.2. Identificación y tratamiento de valores extremos. **  
 
 Los valores extremos tendrían sentido en los campos Fare y Age. Procedemos al análisis de los valores extremos representando Fare y Age con los valores extremos y sin ellos.
   
@@ -412,21 +402,17 @@ outlierKD <- function(dt, var) {
 
 ```{r Outlier 1}
 outlierKD(data, Age)
-
-
 ```
 
 ```{r Outlier 2}
 outlierKD(data, Fare)
-
-
 ```
 
 Como son perfectamente aceptables las edades y que haya gente que pagara mucho más por su billete, al ser el primer viaje del transatlántico más grande de la epoca, decidimos no cambiar ningún valor.
 
 # 4. Análisis de los datos.
 
-## 4.1. Selección de los grupos de datos que se quieren analizar/comparar (planificación de los análisis a aplicar)
+**4.1. Selección de los grupos de datos que se quieren analizar/comparar (planificación de los análisis a aplicar)**  
 
 - Análisis estadístico descriptivo.
 
@@ -450,8 +436,6 @@ Representando la edad de los pasajeros obtenemos:
 ```{r}
 #Test_age <- na.omit(data$Age)
 #Test_age <- as.integer(Test_age)
-
-
 ggplot(data,  aes(x = Age)) +
   geom_histogram(binwidth = 5, fill = 'grey', alpha=0.4) + 
   geom_vline(aes(xintercept=median(Age, na.rm=T)),
@@ -459,7 +443,6 @@ ggplot(data,  aes(x = Age)) +
   geom_vline(aes(xintercept=mean(Age, na.rm=T)),
   colour='red', linetype='dashed', lwd=1) + 
   labs (title = "Distribucion Edades", x= "Edad", y = "Cantidad" )
-
 ```
 
 Podemos observar que la media de edad de los pasajeros es de 29.8 años y la mediana es de 28.  
@@ -468,16 +451,12 @@ Podemos observar que la media de edad de los pasajeros es de 29.8 años y la medi
 Finalmente realizando unos gráficos de las variables principales, clase, sexo y puerto de embarque.
 
 ```{r}
-
 par(mfrow=c(1,2))
-
 ggplot(data,  aes(x = Pclass)) +
   geom_histogram(aes(fill = Pclass) ,stat = "count") + 
   labs (title = "Distribución Clases", x= "Clase", y = "Cantidad", fill = "Clase Pasajero")
-
 qplot(Sex, data = data,  fill= Sex) +
   labs (title = "Distribución Género", x= "Género", y = "Cantidad", fill = "Género Pasajero")
-
 qplot(Embarked, data = data,  fill= Embarked) + 
   labs (title = "Distribución Puerto de Embarque", x= "Puerto", 
         y = "Cantidad", fill = "Puerto de embarque")
@@ -489,7 +468,7 @@ Observamos que la clase más numerosa es la 3ra clase, el sexo predominante es el
 
 
 
-## 4.2. Comprobación de la normalidad y homogeneidad de la varianza.
+**4.2. Comprobación de la normalidad y homogeneidad de la varianza.**  
 
 Comprobar la normalidad y homogeneidad de la varianza tiene sentido para la variables numéricas Age y Fare.
 
@@ -517,7 +496,6 @@ A continuación, comprobamos la normalidad de Fare, gráficamente:
 ```{r,eval=TRUE,echo=TRUE}
 #Hago que los dos ejes tengan el mismo tamaño.
 ggqqplot(data$Fare, ggtheme = theme(aspect.ratio=1), title = "Fare")
-
 ```
 
 Aplicamos el test de Shapiro-Wilk a la variable Fare
@@ -533,7 +511,7 @@ En este caso ni siquiera W está cercano a 1, así que se rechaza la hipótesis nul
 Comprobamos la homogeneidad de la varianza, dado que hemos visto que los datos no siguen una distribución normal, aplicaremos el test de Fligner-Killeen.
 
 ```{r,eval=TRUE,echo=TRUE}
-# Aplicamos el teest de Fligner-Killeen.
+# Aplicamos el test de Fligner-Killeen.
 fligner.test(Age ~ Fare, data = data)
 ```
 
@@ -541,16 +519,18 @@ Dado que la prueba presenta un p-valor inferior al nivel de significancia (<0.05
 
 
 
-## 4.3. Aplicación de pruebas estadísticas para comparar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes.
+**4.3. Aplicación de pruebas estadísticas para comparar los grupos de datos.**   
+*En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc.*  
+*Aplicar al menos tres métodos de análisis diferentes.*  
 
-1 - Comprobar la hipotesis que la 1ra clase tiene mas posibilidades de Sobrevivir
+**1 - Contraste de Hipotesis**  
+*Comprobar la hipotesis que la 1ra clase tiene mas posibilidades de Sobrevivir.*
 
-H0 : No hay diferencia significativa de sobrevivir entre la clase alta y la clase baja
-H1 : La clase alta tiene mas probabilidades de sobrevivir
+H0 : No hay diferencia significativa de sobrevivir entre la clase alta y la clase baja.  
+H1 : La clase alta tiene mas probabilidades de sobrevivir.  
 
 ```{r}
 Pclass_set <- subset(datostrain, Pclass == 1)
-
 #function for z test
 z.test = function(a, b, n){
  sample_mean = mean(a)
@@ -560,44 +540,36 @@ z.test = function(a, b, n){
  zeta = (sample_mean - pop_mean) / (sqrt(var_b/c))
  return(zeta)
 }
-
 #call function
 z.test(Pclass_set$Survived, datostrain$Survived, Pclass_set)
-
 ```
 El valor de z de 7.42 afirma la hipotesis alternativa, la clase alta tiene mas probabilidades de sobrevivir.  
 
 
-2 - Comprobación de correlación entre variables
+**2 - Correlacion**  
+*Comprobación de correlación entre variables*  
 
 ````{r}
 chisq.test(data$Sex, data$Pclass)
-
 ``` 
-
 Dado que el p valor es menor que 0.05, el genero y la clase son significantes y deben de tomarse en cuenta para realizar cualquier modelo. 
   
-3 - Regresion
-
+**3 - Regresion**  
 ```{r}
 fit <- glm(Survived ~ Age + Pclass + Sex + SibSp + Parch + Fare + Embarked, 
            data = datostrain, family = binomial(link = 'logit'))
 summary(fit)
 ```
+Se comprueba que existe una fuerte relación entre la variable dependiente Survived y Edad, Clase y Genero (hombre). 
 
-Se comprueba que existe una fuerte relación entre la variable dependiente Survived y Edad, Clase y Genero (hombre).
-
-
-# 5. Representación de los reultados a apartir de tablas y gráficas.
-
-Representamos los datos de las variables.
-
+# 5. Representación de los reultados a partir de tablas y gráficas.
+Representamos los datos de las variables.  
 ```{r,eval=TRUE,echo=TRUE}
 # Mostramos un histograma para cada variable cuantitativa o un gráfico de barras en caso de que
 # sea una variable cualitativa.
 for (i in 2:ncol(data)) {
   if (class(data[,i]) != "factor" & class(data[,i]) != "character")  {
-    hist(data[,i], freq = TRUE, col = c("green"), 
+    hist(data[,i], freq = TRUE, col = c("steelblue"), 
          main=paste("Distribución de ", 
                     str_to_title(str_replace(colnames(data[i]), "_", " ")), sep = " "),
          xlab= str_to_title(str_replace(colnames(data[i]), "_", " ")))
@@ -613,16 +585,11 @@ for (i in 2:ncol(data)) {
   }
 }
 ```
-
-
-Creamos un gráfico scatter plot, para ver la correlación de las variables:
-
-Hago un gráfico scatterplot para ver la correlación entre variables.
-
+  
+Creamos un gráfico scatter plot, para ver la correlación de las variables:  
 ```{r,eval=TRUE,echo=TRUE}
 # Referencia:
 # https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/r/iris_plots/
-
 # Función para mostrar la correlación
 panel.pearson <- function(x, y, ...) {
 horizontal <- (par("usr")[1] + par("usr")[2]) / 2;
@@ -633,13 +600,10 @@ text(horizontal, vertical, format(abs(cor(x,y)), digits=2))
 pairs(data[c(5,6,7,9)], main = "Data plot en función de las clases", pch = c(22,23,24,25),
       bg = c("yellow","blue","red") [unclass(data[,'Pclass'])],
       upper.panel = panel.pearson)
-
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Referencia:
 # https://warwick.ac.uk/fac/sci/moac/people/students/peter_cock/r/iris_plots/
-
 # Función para mostrar la correlación
 panel.pearson <- function(x, y, ...) {
 horizontal <- (par("usr")[1] + par("usr")[2]) / 2;
@@ -650,15 +614,11 @@ text(horizontal, vertical, format(abs(cor(x,y)), digits=2))
 pairs(data[c(5,6,7,9)], main = "Data plot en función del sexo", pch = c(22,23,24,25),
       bg = c("blue","red") [unclass(data[,'Sex'])],
       upper.panel = panel.pearson)
-
 ```
-
-
-# 6. Resolución del problema. A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?
-
-
-Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables.
-
+  
+# 6. Resolución del problema. 
+**A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?**  
+Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables. 
 ```{r,eval=TRUE,echo=TRUE}
 # Referencia
 # https://www.kaggle.com/thilakshasilva/predicting-titanic-survival-using-five-algorithms#exploratory-data-analysis
@@ -666,10 +626,7 @@ Como se trata de predecir una variable binaria, podemos crear un modelo de regre
 titanic_train <- data[1:891, c("Survived","Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
 titanic_test <- data[892:1309, c("Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
 ```
-
-
 Utilizaremos una parte del conjunto de train del que conocemos los resultados, para validar los resultados.
-
 ```{r,eval=TRUE,echo=TRUE}
 # Volvemos a partir el conjunto de datos
 set.seed(198)
@@ -677,7 +634,6 @@ particion = sample.split(titanic_train$Survived, SplitRatio = 0.8)
 train = subset(titanic_train, particion == TRUE)
 test = subset(titanic_train, particion == FALSE)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Referencia:
 # https://rpubs.com/emilopezcano/logit
@@ -686,82 +642,57 @@ titanic.logit <- glm(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Emba
                     data = titanic_train, family = "binomial"(link="logit"))
 summary(titanic.logit)
 ```
-
-
 Vemos como hay variables que no tienen tanta importancia en el clasificador como Sex y Embarked.
-
 Aplicamos la función step para ir quitando estas variables que no tienen tanta importancia.
-
-
 ```{r,eval=TRUE,echo=TRUE}
 # Modelo de regresión logística
 titanic.logit <- step(titanic.logit)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Modelo de regresión logística
 summary(titanic.logit)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Modelo de regresión logística
 titanic.logit <- step(titanic.logit)
 ```
-
-
 ```{r,eval=TRUE,echo=TRUE}
 # Modelo de regresión logística
 vif(titanic.logit)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Modelo de regresión logística
 durbinWatsonTest(titanic.logit)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Comprobamos los resultados en el conjunto de test de validación
 prob_pred = predict(titanic.logit, type = 'response', newdata = test)
 y_pred = ifelse(prob_pred > 0.5, 1, 0)
 head(y_pred)
 ```
-
 Comprobamos la matriz de confusion
-
 ```{r,eval=TRUE,echo=TRUE}
 # Comprobamos la matriz de confusión
 table(test$Survived, y_pred > 0.5)
-
 #kable(table(test$Survived, (y_pred > 0.5)) %>%
 #  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
-
 ```
-
 Calculamos la precisión del modelo.
-
 ```{r,eval=TRUE,echo=TRUE}
 error <- mean(test$Survived != y_pred) # Misclassification error
 paste('Accuracy',round(1-error,4))
 ```
-
 Finalmente, calculamos los valores finales
-
 ```{r,eval=TRUE,echo=TRUE}
 # Calculamos las predicciones
 titanic_prob = predict(titanic.logit, newdata = titanic_test)
 titanic_pred = ifelse(titanic_prob > 0.5, 1, 0)
 ```
-
 ```{r,eval=TRUE,echo=TRUE}
 # Guardamos los resultados
 results <- data.frame(PassengerID = data[892:1309,"PassengerId"], Survived = titanic_pred)
 ```
-
-
 ```{r,eval=TRUE,echo=TRUE}
 # Guardamos el archivo
 write.csv(results, file = 'PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)
 ```
-
-
-# 7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.
