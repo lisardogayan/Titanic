@@ -31,11 +31,13 @@ https://www.kaggle.com/c/3136/download-all
 
 # Archivos:
 
-- Práctica2.Rmd     Archivo Rmarkdown que produce el resto de documentos
+- Práctica2.Rmd     Archivo Rmarkdown que produce el resto de documentos.
 - Práctica2.html    Archivo .html con los resultados.
-- Práctica2.log     Archivo .log de la conversión de Rmarkdown
+- Práctica2.log     Archivo .log de la conversión de Rmarkdown.
 - Práctica2.pdf     Archivo .pdf con los resultados.
-- PrediccionSupervivenciaTitanic.csv  Fichero de resultados
+- PrediccionSupervivenciaTitanic.csv  Fichero de predicciones
+- titanic_train_treated.csv           Fichero de datos entrenamiento tratado.
+- titanic_test_treated.csv            Fichero de datos de test tratado.
 
 
 # Licencia
