@@ -1922,6 +1922,7 @@ titanic_pred = ifelse(titanic_prob &gt; 0.5, 1, 0)</code></pre>
 results &lt;- data.frame(PassengerID = data[892:1309,&quot;PassengerId&quot;], Survived = titanic_pred)</code></pre>
 <pre class="r"><code># Guardamos el archivo
 write.csv(results, file = './output/PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)</code></pre>
+<p>Los resultados han permitido responder al problema, dando una puntuación de 0.80382, que está bastante bien, es bastante superior, a lo que sería un predictor aleatorio. A partir de aquí se podría mejorar el modelo de predicción considerando otros métodos y creando por ejemplo un “stacking”&quot; de ellos.</p>
 </div>
 <div id="codigo.-hay-que-adjuntar-el-codigo-preferiblemente-en-r-con-el-que-se-ha-realizado-la-limpieza-analisis-y-represntacion-de-los-datos." class="section level1">
 <h1>7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.</h1>

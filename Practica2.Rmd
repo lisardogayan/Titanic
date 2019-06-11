@@ -771,6 +771,8 @@ results <- data.frame(PassengerID = data[892:1309,"PassengerId"], Survived = tit
 write.csv(results, file = './output/PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)
 ```
 
+Los resultados han permitido responder al problema, dando una puntuación de 0.80382, que está bastante bien, es bastante superior, a lo que sería un predictor aleatorio. A partir de aquí se podría mejorar el modelo de predicción considerando otros métodos y creando por ejemplo un "stacking"" de ellos. 
+
 
 
 # 7. Código. Hay que adjuntar el código, preferiblemente en R, con el que se ha realizado la limpieza, análisis y represntación de los datos.
