@@ -668,11 +668,10 @@ pairs(data[c(5,6,7,9)], main = "Data plot en función del sexo", pch = c(22,23,24
       bg = c("blue","red") [unclass(data[,'Sex'])],
       upper.panel = panel.pearson)
 ```
-  
-# 6. Resolución del problema. 
-**A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?** 
 
-Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables. 
+Antes de pasar a la resolución del problema en sí, de predecir la variable Survived en el conjunto de test, podemos guardar los resultados de los conjuntos de datos tratados.
+
+Para ello, volvemos a separar los datos, tomando sólo las columnas que utilizaremos para la predicción. No se utilizan los datos de Cabin ni de Ticket. Los datos de Name, se han tratado y sustituido por Title.
 
 ```{r,eval=TRUE,echo=TRUE}
 # Referencia
@@ -681,6 +680,20 @@ Como se trata de predecir una variable binaria, podemos crear un modelo de regre
 titanic_train <- data[1:891, c("Survived","Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
 titanic_test <- data[892:1309, c("Pclass","Sex","Age","SibSp","Parch","Fare","Embarked","Title")]
 ```
+
+Y guardamos los archivos:
+
+```{r,eval=TRUE,echo=TRUE}
+# Guardamos el archivo
+write.csv(titanic_train, file = './output/titanic_train_treated.csv', row.names = FALSE, quote=FALSE)
+write.csv(titanic_test, file = './output/titanic_test_treated.csv', row.names = FALSE, quote=FALSE)
+```
+
+
+# 6. Resolución del problema. 
+**A partir de los resultados obtenidos. ¿cuáles son las conclusiones?. ¿Los resultados permiten responder al problema?** 
+
+Como se trata de predecir una variable binaria, podemos crear un modelo de regresión logística que sea función de las otras variables. 
 
 Utilizaremos una parte del conjunto de train del que conocemos los resultados, para validar los resultados.
 
@@ -755,7 +768,7 @@ results <- data.frame(PassengerID = data[892:1309,"PassengerId"], Survived = tit
 ```
 ```{r,eval=TRUE,echo=TRUE}
 # Guardamos el archivo
-write.csv(results, file = 'PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)
+write.csv(results, file = './output/PrediccionSupervivenciaTitanic.csv', row.names = FALSE, quote=FALSE)
 ```
 
 
@@ -768,10 +781,11 @@ Participación de los integrantes del equipo:
 
 ```{r,eval=TRUE,echo=TRUE}
 # Creamos una tabla en formato kagle para mostrar la participación:
-participantes <-  c("Investigación previa", "L.G, J.L.M.", "Redacción de las respuestas", "L.G, J.L.M.", "Desarrollo código", "L.G, J.L.M.")
-df <- matrix(participantes, ncol = 2, byrow = TRUE) %>%
-  as_tibble() 
-names(df) <- c("Contribuciones", "Firmas")
+participantes <-  c("Investigación previa", "L.G, J.L.M.", 
+                    "Redacción de las respuestas", "L.G, J.L.M.", 
+                    "Desarrollo código", "L.G, J.L.M.")
+df <- matrix(participantes, ncol = 2, byrow = TRUE) 
+colnames(df) <- c("Contribuciones", "Firmas") 
 kable(df) %>%
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
