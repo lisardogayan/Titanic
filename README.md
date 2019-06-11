@@ -1,4 +1,4 @@
-Titanic: Machine Learning from Disaster
+##Titanic: Machine Learning from Disaster
 
 (https://www.kaggle.com/c/titanic)
 
@@ -6,11 +6,11 @@ Titanic: Machine Learning from Disaster
 
 El objetivo de esta actividad es el tratamiento de un dataset, correspondiente a los datos sobre la supervivencia de los pasajeros del Titanic.
 
-Autores:
+##Autores:
 
-Lisardo Gayán
+#_Lisardo Gayán_
 
-José Luis Melo.
+#_José Luis Melo._
 
 Acerca de este software.
 
@@ -21,7 +21,7 @@ Universitat Oberta of Catalunya.
 Consultora: Mireia Calvo González 
  
 
-Dataset.
+##Dataset.
 
 Puede chequear el dataset en la siguiente dirección:
 
@@ -29,11 +29,16 @@ https://www.kaggle.com/c/titanic/data
 
 https://www.kaggle.com/c/3136/download-all
 
-Archivos:
+##Archivos:
+
+-Práctica2.Rmd     Archivo Rmarkdown que produce el resto de documentos
+-Práctica2.html    Archivo .html con los resultados.
+-Práctica2.log     Archivo .log de la conversión de Rmarkdown
+-Práctica2.pdf     Archivo .pdf con los resultados.
+-PrediccionSupervivenciaTitanic.csv  Fichero de resultados
 
 
-
-Licencia
+##Licencia
 
 El contenido de este proyecto esta licencia bajo la Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International, y el código fuente usado para mostrar este contenido esta licenciado bajo la MIT license.
 
